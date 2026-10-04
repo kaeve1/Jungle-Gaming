@@ -1,0 +1,223 @@
+ Image jungle-gaming/service:local Building 
+ Image jungle-gaming/ministack-strict:local Building 
+ Image jungle-gaming/service:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.98kB 0.0s done
+#1 DONE 0.0s
+
+#2 [api internal] load build definition from Dockerfile
+#2 transferring dockerfile: 875B 0.0s done
+#2 DONE 0.1s
+
+#3 [sqs internal] load build definition from Dockerfile
+#3 transferring dockerfile: 395B 0.0s done
+#3 DONE 0.1s
+
+#4 [api] resolve image config for docker-image://docker.io/docker/dockerfile:1
+#4 ...
+
+#5 [sqs internal] load metadata for docker.io/ministackorg/ministack:1.5.20@sha256:051edcb3daed7ca3bdfe06c3c5e1427473ba656e8211f8c1d342543b277e982d
+#5 DONE 0.2s
+
+#6 [sqs internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#7 [sqs internal] load build context
+#7 DONE 0.0s
+
+#8 [sqs 1/3] FROM docker.io/ministackorg/ministack:1.5.20@sha256:051edcb3daed7ca3bdfe06c3c5e1427473ba656e8211f8c1d342543b277e982d
+#8 resolve docker.io/ministackorg/ministack:1.5.20@sha256:051edcb3daed7ca3bdfe06c3c5e1427473ba656e8211f8c1d342543b277e982d 0.1s done
+#8 DONE 0.1s
+
+#7 [sqs internal] load build context
+#7 transferring context: 178B done
+#7 DONE 0.0s
+
+#9 [sqs 2/3] COPY strict_auth.py run.py durable_state.py test_strict_auth.py test_durable_state.py /strict/
+#9 CACHED
+
+#10 [sqs 3/3] RUN cd /strict && python -m unittest -v test_strict_auth test_durable_state
+#10 CACHED
+
+#4 [api] resolve image config for docker-image://docker.io/docker/dockerfile:1
+#4 ...
+
+#11 [sqs] exporting to image
+#11 exporting layers 0.0s done
+#11 exporting manifest sha256:3f55f8a232e236ad50fbfb84c96afe80bc587ee7a9edde81e1ad28bd06752b30 0.1s done
+#11 exporting config sha256:e554d8813d85b431aaa3ea1150989668a0add61a06e262ea97141c5621782911 0.1s done
+#11 exporting attestation manifest sha256:2faad6d625f412e788968ebc5a752edad583e77ef608b8a183f90fbb6639910d 0.1s done
+#11 exporting manifest list sha256:8c6f27d14faef305f85c9cdfd9f42dd52b1c13ad158af918da790091cee880e7 0.1s done
+#11 naming to docker.io/jungle-gaming/ministack-strict:local done
+#11 unpacking to docker.io/jungle-gaming/ministack-strict:local 0.1s done
+#11 DONE 0.6s
+
+#4 [api] resolve image config for docker-image://docker.io/docker/dockerfile:1
+#4 DONE 1.5s
+
+#12 [api] docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#12 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.1s done
+#12 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.1s done
+#12 CACHED
+
+#13 [sqs] resolving provenance for metadata file
+#13 DONE 0.0s
+
+#14 [api internal] load metadata for gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab
+#14 DONE 0.8s
+
+#15 [api internal] load metadata for docker.io/library/golang:1.27.1-bookworm@sha256:69a7b9788769bec032d238959b61854e9ae87f57be9029ec04e9885fabf99195
+#15 DONE 1.7s
+
+#16 [migrate internal] load .dockerignore
+#16 transferring context: 173B done
+#16 DONE 0.1s
+
+#17 [api internal] load build context
+#17 DONE 0.0s
+
+#18 [api runtime 1/3] FROM gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab
+#18 resolve gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab 0.2s done
+#18 resolve gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab 0.2s done
+#18 DONE 0.2s
+
+#19 [api build 1/6] FROM docker.io/library/golang:1.27.1-bookworm@sha256:69a7b9788769bec032d238959b61854e9ae87f57be9029ec04e9885fabf99195
+#19 resolve docker.io/library/golang:1.27.1-bookworm@sha256:69a7b9788769bec032d238959b61854e9ae87f57be9029ec04e9885fabf99195 0.2s done
+#19 DONE 0.2s
+
+#17 [api internal] load build context
+#17 transferring context: 288.23kB 0.2s done
+#17 DONE 0.3s
+
+#20 [api build 2/6] WORKDIR /src
+#20 CACHED
+
+#21 [api build 3/6] COPY go.mod go.sum ./
+#21 CACHED
+
+#22 [api build 4/6] RUN go mod download && go mod verify
+#22 CACHED
+
+#21 [migrate build 3/6] COPY go.mod go.sum ./
+#21 CACHED
+
+#20 [migrate build 2/6] WORKDIR /src
+#20 CACHED
+
+#23 [migrate build 5/6] COPY . .
+#23 DONE 0.5s
+
+#24 [migrate build 6/6] RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/service ./cmd/service  && CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/migrate ./cmd/migrate
+#24 DONE 20.1s
+
+#25 [api runtime 2/3] COPY --from=build /out/service /service
+#25 CACHED
+
+#26 [api runtime 3/3] COPY --from=build /out/migrate /migrate
+#26 CACHED
+
+#27 [migrate] exporting to image
+#27 exporting layers 0.0s done
+#27 exporting manifest sha256:807e2aa7ff9922f808c7f9aca4121d06d80047f673c33306e09ca57f957e4a0a 0.1s done
+#27 exporting config sha256:43d93edaad13f9cb24b4f48573360b1b18cf350f8fc044ae515cb179554bc6e6
+#27 exporting config sha256:43d93edaad13f9cb24b4f48573360b1b18cf350f8fc044ae515cb179554bc6e6 0.2s done
+#27 exporting attestation manifest sha256:1ba8a00c389b067cb7518b297ac1cd3b6306e9c47a5f0fb40805c8123963e761
+#27 exporting attestation manifest sha256:1ba8a00c389b067cb7518b297ac1cd3b6306e9c47a5f0fb40805c8123963e761 0.2s done
+#27 exporting manifest list sha256:5a07186d32f247673957811a15e3b503fc80f90572f81bce0381e0873e79b0bc
+#27 exporting manifest list sha256:5a07186d32f247673957811a15e3b503fc80f90572f81bce0381e0873e79b0bc 0.2s done
+#27 naming to docker.io/jungle-gaming/service:local
+#27 naming to docker.io/jungle-gaming/service:local 0.0s done
+#27 unpacking to docker.io/jungle-gaming/service:local 0.0s done
+#27 DONE 1.0s
+
+#28 [api] exporting to image
+#28 exporting layers 0.0s done
+#28 exporting manifest sha256:b9d0004099e45819f779343eda9f83ada84ea948ec11646c49fbdb9c190a2ceb 0.2s done
+#28 exporting config sha256:cce1eea1cfe201092249afea01a40f9c34b544de9d7f48e2e480df8b84892fbf 0.2s done
+#28 exporting attestation manifest sha256:289d4b730ca8e21d96f5bc5fb070446aa5899fec03c88ec486cb10065dd86946 0.2s done
+#28 exporting manifest list sha256:3c9ce92a87aaef521cdfc717be24898ff93da736e2db894bdfcb90c74ce39669 0.1s done
+#28 naming to docker.io/jungle-gaming/service:local 0.0s done
+#28 unpacking to docker.io/jungle-gaming/service:local 0.1s done
+#28 DONE 1.0s
+
+#29 [migrate] resolving provenance for metadata file
+#29 DONE 0.2s
+
+#30 [api] resolving provenance for metadata file
+#30 DONE 0.0s
+ Image jungle-gaming/ministack-strict:local Built 
+ Image jungle-gaming/service:local Built 
+ Image jungle-gaming/service:local Built 
+ Network jungle-gaming-validation-74887ba27953_default Creating 
+ Volume jungle-gaming-validation-74887ba27953_postgres-data Creating 
+ Volume jungle-gaming-validation-74887ba27953_sqs-state Creating 
+ Volume jungle-gaming-validation-74887ba27953_sqs-state Creating 
+ Volume jungle-gaming-validation-74887ba27953_postgres-data Creating 
+ Network jungle-gaming-validation-74887ba27953_default Creating 
+ Volume jungle-gaming-validation-74887ba27953_sqs-credentials Creating 
+ Volume jungle-gaming-validation-74887ba27953_sqs-credentials Creating 
+ Volume jungle-gaming-validation-74887ba27953_wallet-service-credentials Creating 
+ Volume jungle-gaming-validation-74887ba27953_wallet-service-credentials Creating 
+ Volume jungle-gaming-validation-74887ba27953_sqs-state Created 
+ Volume jungle-gaming-validation-74887ba27953_sqs-state Created 
+ Volume jungle-gaming-validation-74887ba27953_wallet-service-credentials Created 
+ Volume jungle-gaming-validation-74887ba27953_wallet-service-credentials Created 
+ Volume jungle-gaming-validation-74887ba27953_postgres-data Created 
+ Volume jungle-gaming-validation-74887ba27953_postgres-data Created 
+ Volume jungle-gaming-validation-74887ba27953_sqs-credentials Created 
+ Volume jungle-gaming-validation-74887ba27953_sqs-credentials Created 
+ Network jungle-gaming-validation-74887ba27953_default Created 
+ Network jungle-gaming-validation-74887ba27953_default Created 
+ Container jungle-gaming-validation-74887ba27953-postgres-1 Creating 
+ Container jungle-gaming-validation-74887ba27953-keycloak-1 Creating 
+ Container jungle-gaming-validation-74887ba27953-sqs-1 Creating 
+ Container jungle-gaming-validation-74887ba27953-keycloak-1 Created 
+ Container jungle-gaming-validation-74887ba27953-postgres-1 Created 
+ Container jungle-gaming-validation-74887ba27953-migrate-1 Creating 
+ Container jungle-gaming-validation-74887ba27953-sqs-1 Created 
+ Container jungle-gaming-validation-74887ba27953-sqs-init-1 Creating 
+ Container jungle-gaming-validation-74887ba27953-migrate-1 Created 
+ Container jungle-gaming-validation-74887ba27953-sqs-init-1 Created 
+ Container jungle-gaming-validation-74887ba27953-ready-1 Creating 
+ Container jungle-gaming-validation-74887ba27953-ready-1 Created 
+ Container jungle-gaming-validation-74887ba27953-api-1 Creating 
+ Container jungle-gaming-validation-74887ba27953-api-1 Created 
+ Container jungle-gaming-validation-74887ba27953-keycloak-1 Starting 
+ Container jungle-gaming-validation-74887ba27953-postgres-1 Starting 
+ Container jungle-gaming-validation-74887ba27953-sqs-1 Starting 
+ Container jungle-gaming-validation-74887ba27953-keycloak-1 Started 
+ Container jungle-gaming-validation-74887ba27953-postgres-1 Started 
+ Container jungle-gaming-validation-74887ba27953-postgres-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-sqs-1 Started 
+ Container jungle-gaming-validation-74887ba27953-sqs-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-sqs-1 Healthy 
+ Container jungle-gaming-validation-74887ba27953-sqs-init-1 Starting 
+ Container jungle-gaming-validation-74887ba27953-sqs-init-1 Started 
+ Container jungle-gaming-validation-74887ba27953-postgres-1 Healthy 
+ Container jungle-gaming-validation-74887ba27953-migrate-1 Starting 
+ Container jungle-gaming-validation-74887ba27953-migrate-1 Started 
+ Container jungle-gaming-validation-74887ba27953-sqs-init-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-keycloak-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-migrate-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-migrate-1 Exited 
+ Container jungle-gaming-validation-74887ba27953-sqs-init-1 Exited 
+ Container jungle-gaming-validation-74887ba27953-keycloak-1 Healthy 
+ Container jungle-gaming-validation-74887ba27953-ready-1 Starting 
+ Container jungle-gaming-validation-74887ba27953-ready-1 Started 
+ Container jungle-gaming-validation-74887ba27953-api-1 Starting 
+ Container jungle-gaming-validation-74887ba27953-api-1 Started 
+ Container jungle-gaming-validation-74887ba27953-sqs-init-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-postgres-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-keycloak-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-sqs-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-api-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-ready-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-migrate-1 Waiting 
+ Container jungle-gaming-validation-74887ba27953-sqs-1 Healthy 
+ Container jungle-gaming-validation-74887ba27953-postgres-1 Healthy 
+ Container jungle-gaming-validation-74887ba27953-keycloak-1 Healthy 
+ Container jungle-gaming-validation-74887ba27953-sqs-init-1 Exited 
+ Container jungle-gaming-validation-74887ba27953-ready-1 Healthy 
+ Container jungle-gaming-validation-74887ba27953-migrate-1 Exited 
+ Container jungle-gaming-validation-74887ba27953-api-1 Healthy 

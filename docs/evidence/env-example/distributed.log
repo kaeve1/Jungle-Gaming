@@ -1,0 +1,406 @@
+jungle-gaming-validation-74887ba27953-postgres-1
+jungle-gaming-validation-74887ba27953-postgres-1
+jungle-gaming-validation-74887ba27953-sqs-1
+jungle-gaming-validation-74887ba27953-sqs-1
+=== RUN   TestStage6AuthenticatedHTTPAndProviderIsolation
+--- PASS: TestStage6AuthenticatedHTTPAndProviderIsolation (1.60s)
+=== RUN   TestStage6StrictJSONAndLedgerPagination
+--- PASS: TestStage6StrictJSONAndLedgerPagination (1.32s)
+=== RUN   TestStage6ExpiredAndForgedKeycloakTokens
+--- PASS: TestStage6ExpiredAndForgedKeycloakTokens (5.37s)
+=== RUN   TestStage6TransientHTTPFailureAndLifecycle
+--- PASS: TestStage6TransientHTTPFailureAndLifecycle (0.68s)
+=== RUN   TestStage6AmbiguousHeadersRejected
+=== RUN   TestStage6AmbiguousHeadersRejected/Authorization
+=== RUN   TestStage6AmbiguousHeadersRejected/Idempotency-Key
+=== RUN   TestStage6AmbiguousHeadersRejected/X-Correlation-Id
+=== RUN   TestStage6AmbiguousHeadersRejected/Content-Type
+--- PASS: TestStage6AmbiguousHeadersRejected (0.63s)
+    --- PASS: TestStage6AmbiguousHeadersRejected/Authorization (0.00s)
+    --- PASS: TestStage6AmbiguousHeadersRejected/Idempotency-Key (0.00s)
+    --- PASS: TestStage6AmbiguousHeadersRejected/X-Correlation-Id (0.00s)
+    --- PASS: TestStage6AmbiguousHeadersRejected/Content-Type (0.00s)
+=== RUN   TestStage7FxHTTPReferenceRecovery
+--- PASS: TestStage7FxHTTPReferenceRecovery (1.68s)
+=== RUN   TestStage5MoneyLimitsAndPrivateRejections
+--- PASS: TestStage5MoneyLimitsAndPrivateRejections (0.49s)
+=== RUN   TestStage5InitialReferenceIsDurable
+--- PASS: TestStage5InitialReferenceIsDurable (0.60s)
+=== RUN   TestStage5LockRetryIsBounded
+--- PASS: TestStage5LockRetryIsBounded (0.65s)
+=== RUN   TestStage5RealDeadlockRecovery
+--- PASS: TestStage5RealDeadlockRecovery (1.52s)
+=== RUN   TestStage5CommitConstraintFailureRollsBack
+--- PASS: TestStage5CommitConstraintFailureRollsBack (0.44s)
+=== RUN   TestStage5ExternalIDIndexRace
+--- PASS: TestStage5ExternalIDIndexRace (0.63s)
+=== RUN   TestStage5OpeningAndBusinessResults
+--- PASS: TestStage5OpeningAndBusinessResults (0.55s)
+=== RUN   TestStage5FiftyConcurrentDuplicates
+--- PASS: TestStage5FiftyConcurrentDuplicates (0.50s)
+=== RUN   TestStage5TwoConcurrentBets
+--- PASS: TestStage5TwoConcurrentBets (0.48s)
+=== RUN   TestStage5RollbackAtEveryWrite
+=== RUN   TestStage5RollbackAtEveryWrite/after_0
+=== RUN   TestStage5RollbackAtEveryWrite/after_1
+=== RUN   TestStage5RollbackAtEveryWrite/after_2
+=== RUN   TestStage5RollbackAtEveryWrite/after_3
+=== RUN   TestStage5RollbackAtEveryWrite/after_4
+=== RUN   TestStage5RollbackAtEveryWrite/after_5
+--- PASS: TestStage5RollbackAtEveryWrite (0.58s)
+    --- PASS: TestStage5RollbackAtEveryWrite/after_0 (0.05s)
+    --- PASS: TestStage5RollbackAtEveryWrite/after_1 (0.03s)
+    --- PASS: TestStage5RollbackAtEveryWrite/after_2 (0.03s)
+    --- PASS: TestStage5RollbackAtEveryWrite/after_3 (0.02s)
+    --- PASS: TestStage5RollbackAtEveryWrite/after_4 (0.02s)
+    --- PASS: TestStage5RollbackAtEveryWrite/after_5 (0.02s)
+=== RUN   TestStage5IndependentWalletsAndCancellation
+--- PASS: TestStage5IndependentWalletsAndCancellation (0.81s)
+=== RUN   TestStage5ReplayDoesNotAcquireWalletLock
+--- PASS: TestStage5ReplayDoesNotAcquireWalletLock (0.50s)
+=== RUN   TestStage5CrossWalletIdentityCollision
+--- PASS: TestStage5CrossWalletIdentityCollision (0.49s)
+=== RUN   TestArchitectureReviewRejectsEffectiveAdministrativeUser
+=== RUN   TestArchitectureReviewRejectsEffectiveAdministrativeUser/wallet_migrator
+=== RUN   TestArchitectureReviewRejectsEffectiveAdministrativeUser/postgres
+--- PASS: TestArchitectureReviewRejectsEffectiveAdministrativeUser (0.00s)
+    --- PASS: TestArchitectureReviewRejectsEffectiveAdministrativeUser/wallet_migrator (0.00s)
+    --- PASS: TestArchitectureReviewRejectsEffectiveAdministrativeUser/postgres (0.00s)
+=== RUN   TestBrokerSignatureAndAdminBoundary
+=== RUN   TestBrokerSignatureAndAdminBoundary/valid
+=== RUN   TestBrokerSignatureAndAdminBoundary/unsigned
+=== RUN   TestBrokerSignatureAndAdminBoundary/tampered_body
+=== RUN   TestBrokerSignatureAndAdminBoundary/tampered_action
+=== RUN   TestBrokerSignatureAndAdminBoundary/expired
+=== RUN   TestBrokerSignatureAndAdminBoundary/admin_route
+--- PASS: TestBrokerSignatureAndAdminBoundary (0.04s)
+    --- PASS: TestBrokerSignatureAndAdminBoundary/valid (0.04s)
+    --- PASS: TestBrokerSignatureAndAdminBoundary/unsigned (0.00s)
+    --- PASS: TestBrokerSignatureAndAdminBoundary/tampered_body (0.00s)
+    --- PASS: TestBrokerSignatureAndAdminBoundary/tampered_action (0.00s)
+    --- PASS: TestBrokerSignatureAndAdminBoundary/expired (0.00s)
+    --- PASS: TestBrokerSignatureAndAdminBoundary/admin_route (0.00s)
+=== RUN   TestCodexReviewSchemaRejectsInvalidHistory
+=== RUN   TestCodexReviewSchemaRejectsInvalidHistory/wrong_replay_balance
+=== RUN   TestCodexReviewSchemaRejectsInvalidHistory/refund_different_round
+=== RUN   TestCodexReviewSchemaRejectsInvalidHistory/late_opening
+=== RUN   TestCodexReviewSchemaRejectsInvalidHistory/external_credit_cannot_replace_opening
+=== RUN   TestCodexReviewSchemaRejectsInvalidHistory/app_cannot_forge_creation_metadata
+--- PASS: TestCodexReviewSchemaRejectsInvalidHistory (0.13s)
+    --- PASS: TestCodexReviewSchemaRejectsInvalidHistory/wrong_replay_balance (0.03s)
+    --- PASS: TestCodexReviewSchemaRejectsInvalidHistory/refund_different_round (0.03s)
+    --- PASS: TestCodexReviewSchemaRejectsInvalidHistory/late_opening (0.03s)
+    --- PASS: TestCodexReviewSchemaRejectsInvalidHistory/external_credit_cannot_replace_opening (0.02s)
+    --- PASS: TestCodexReviewSchemaRejectsInvalidHistory/app_cannot_forge_creation_metadata (0.02s)
+=== RUN   TestStage8MalformedMessagesReachRealDLQ
+--- PASS: TestStage8MalformedMessagesReachRealDLQ (3.58s)
+=== RUN   TestStage8BusinessRejectionAcknowledgedAndInboxConflictRedriven
+--- PASS: TestStage8BusinessRejectionAcknowledgedAndInboxConflictRedriven (2.88s)
+=== RUN   TestStage8ExhaustedTransientRetryReachesDLQ
+--- PASS: TestStage8ExhaustedTransientRetryReachesDLQ (7.40s)
+=== RUN   TestStage8ConsumerKilledAfterCommitBeforeDelete
+--- PASS: TestStage8ConsumerKilledAfterCommitBeforeDelete (3.85s)
+=== RUN   TestStage8CrashConsumerHelper
+    consumer_recovery_test.go:235: child process only
+--- SKIP: TestStage8CrashConsumerHelper (0.00s)
+=== RUN   TestStage8GroupsParallelAndRetryKeepsFIFOOrder
+--- PASS: TestStage8GroupsParallelAndRetryKeepsFIFOOrder (3.41s)
+=== RUN   TestStage8InboxFinancialAtomicityAndRaces
+--- PASS: TestStage8InboxFinancialAtomicityAndRaces (0.62s)
+=== RUN   TestStage8InboxRollbackAtEveryWrite
+=== RUN   TestStage8InboxRollbackAtEveryWrite/1
+=== RUN   TestStage8InboxRollbackAtEveryWrite/2
+=== RUN   TestStage8InboxRollbackAtEveryWrite/3
+=== RUN   TestStage8InboxRollbackAtEveryWrite/4
+=== RUN   TestStage8InboxRollbackAtEveryWrite/5
+=== RUN   TestStage8InboxRollbackAtEveryWrite/6
+=== RUN   TestStage8InboxRollbackAtEveryWrite/7
+--- PASS: TestStage8InboxRollbackAtEveryWrite (3.89s)
+    --- PASS: TestStage8InboxRollbackAtEveryWrite/1 (0.45s)
+    --- PASS: TestStage8InboxRollbackAtEveryWrite/2 (0.48s)
+    --- PASS: TestStage8InboxRollbackAtEveryWrite/3 (1.03s)
+    --- PASS: TestStage8InboxRollbackAtEveryWrite/4 (0.44s)
+    --- PASS: TestStage8InboxRollbackAtEveryWrite/5 (0.49s)
+    --- PASS: TestStage8InboxRollbackAtEveryWrite/6 (0.47s)
+    --- PASS: TestStage8InboxRollbackAtEveryWrite/7 (0.52s)
+=== RUN   TestStage8RealConsumerHTTPAndPendingReference
+--- PASS: TestStage8RealConsumerHTTPAndPendingReference (4.01s)
+=== RUN   TestDatabaseClockSamplesWallTimeInsideTransaction
+--- PASS: TestDatabaseClockSamplesWallTimeInsideTransaction (0.47s)
+=== RUN   TestStage11RealContainerOutagesAndRecovery
+    distributed_outages_test.go:45: independent Fx process PID=176 roles=api,consumer,outbox-publisher mode=
+    distributed_outages_test.go:45: independent Fx process PID=187 roles=api,consumer,outbox-publisher mode=
+    distributed_outages_test.go:45: independent Fx process PID=197 roles=api,consumer,outbox-publisher mode=
+    distributed_outages_test.go:67: independent Fx process PID=214 roles=api,reference-worker,consumer,outbox-publisher mode=
+    distributed_outages_test.go:91: real test PostgreSQL and SQS paused/resumed; three processes remained alive; reference past TTL recovered; no duplicate credit or loss of unpublished events
+--- PASS: TestStage11RealContainerOutagesAndRecovery (27.77s)
+=== RUN   TestStage11ProcessHelper
+    distributed_process_test.go:138: child only
+--- SKIP: TestStage11ProcessHelper (0.00s)
+=== RUN   TestStage11FxConsumerKilledAfterCommitBeforeDelete
+    distributed_recovery_test.go:24: independent Fx process PID=228 roles=consumer mode=consume-after
+    distributed_recovery_test.go:33: independent Fx process PID=237 roles=consumer mode=
+    distributed_recovery_test.go:34: independent Fx process PID=250 roles=consumer mode=
+--- PASS: TestStage11FxConsumerKilledAfterCommitBeforeDelete (33.81s)
+=== RUN   TestStage11FxPublishersKilledBeforeSendAndBeforeConfirmation
+=== RUN   TestStage11FxPublishersKilledBeforeSendAndBeforeConfirmation/publish-before
+    distributed_recovery_test.go:60: independent Fx process PID=260 roles=outbox-publisher mode=publish-before
+    distributed_recovery_test.go:99: independent Fx process PID=271 roles=outbox-publisher mode=
+    distributed_recovery_test.go:100: independent Fx process PID=280 roles=outbox-publisher mode=
+    distributed_recovery_test.go:140: SIGKILL window=publish-before original claim recovered with attempts=2; two independent publishers delivered all18 unique events
+=== RUN   TestStage11FxPublishersKilledBeforeSendAndBeforeConfirmation/publish-after
+    distributed_recovery_test.go:60: independent Fx process PID=294 roles=outbox-publisher mode=publish-after
+    distributed_recovery_test.go:99: independent Fx process PID=303 roles=outbox-publisher mode=
+    distributed_recovery_test.go:100: independent Fx process PID=313 roles=outbox-publisher mode=
+    distributed_recovery_test.go:140: SIGKILL window=publish-after original claim recovered with attempts=2; two independent publishers delivered all18 unique events
+--- PASS: TestStage11FxPublishersKilledBeforeSendAndBeforeConfirmation (70.91s)
+    --- PASS: TestStage11FxPublishersKilledBeforeSendAndBeforeConfirmation/publish-before (34.21s)
+    --- PASS: TestStage11FxPublishersKilledBeforeSendAndBeforeConfirmation/publish-after (36.70s)
+=== RUN   TestStage11ReferencesExpireAndInvalidAcrossProcesses
+    distributed_recovery_test.go:151: independent Fx process PID=327 roles=api,reference-worker,consumer,outbox-publisher mode=
+    distributed_recovery_test.go:151: independent Fx process PID=337 roles=api,reference-worker,consumer,outbox-publisher mode=
+    distributed_recovery_test.go:151: independent Fx process PID=347 roles=api,reference-worker,consumer,outbox-publisher mode=
+--- PASS: TestStage11ReferencesExpireAndInvalidAcrossProcesses (6.94s)
+=== RUN   TestStage11ThreeProcessesConcurrencyRestartAndTransports
+    distributed_test.go:59: independent Fx process PID=364 roles=api,reference-worker,consumer,outbox-publisher mode=
+    distributed_test.go:59: independent Fx process PID=375 roles=api,reference-worker,consumer,outbox-publisher mode=
+    distributed_test.go:59: independent Fx process PID=386 roles=api,reference-worker,consumer,outbox-publisher mode=
+    distributed_test.go:217: independent Fx process PID=426 roles=api,reference-worker,consumer,outbox-publisher mode=
+    distributed_test.go:217: independent Fx process PID=436 roles=api,reference-worker,consumer,outbox-publisher mode=
+    distributed_test.go:217: independent Fx process PID=446 roles=api,reference-worker,consumer,outbox-publisher mode=
+--- PASS: TestStage11ThreeProcessesConcurrencyRestartAndTransports (44.83s)
+=== RUN   TestStage11HTTPKillBeforeAndAfterCommit
+    distributed_test.go:310: independent Fx process PID=466 roles=api mode=
+    distributed_test.go:311: independent Fx process PID=476 roles=api mode=
+    distributed_test.go:351: independent Fx process PID=487 roles=api mode=http-after
+--- PASS: TestStage11HTTPKillBeforeAndAfterCommit (3.02s)
+=== RUN   TestStage12ReferenceLogKeepsInputMessageIdentity
+--- PASS: TestStage12ReferenceLogKeepsInputMessageIdentity (0.55s)
+=== RUN   TestStage12FailedMetricRequiresConfirmedAudit
+=== RUN   TestStage12FailedMetricRequiresConfirmedAudit/rollback-audit-false
+=== RUN   TestStage12FailedMetricRequiresConfirmedAudit/rollback-audit-true
+--- PASS: TestStage12FailedMetricRequiresConfirmedAudit (1.24s)
+    --- PASS: TestStage12FailedMetricRequiresConfirmedAudit/rollback-audit-false (0.62s)
+    --- PASS: TestStage12FailedMetricRequiresConfirmedAudit/rollback-audit-true (0.63s)
+=== RUN   TestStage12ThreeProcessesContestReplays
+    final_review_test.go:129: independent Fx process PID=501 roles=api mode=
+    final_review_test.go:129: independent Fx process PID=511 roles=api mode=
+    final_review_test.go:129: independent Fx process PID=521 roles=api mode=
+--- PASS: TestStage12ThreeProcessesContestReplays (4.52s)
+=== RUN   TestStage12ReferenceMetadataBoundaries
+=== RUN   TestStage12ReferenceMetadataBoundaries/other-wallet-player
+=== RUN   TestStage12ReferenceMetadataBoundaries/other-currency
+=== RUN   TestStage12ReferenceMetadataBoundaries/other-round
+=== RUN   TestStage12ReferenceMetadataBoundaries/other-provider
+--- PASS: TestStage12ReferenceMetadataBoundaries (0.55s)
+    --- PASS: TestStage12ReferenceMetadataBoundaries/other-wallet-player (0.01s)
+    --- PASS: TestStage12ReferenceMetadataBoundaries/other-currency (0.01s)
+    --- PASS: TestStage12ReferenceMetadataBoundaries/other-round (0.01s)
+    --- PASS: TestStage12ReferenceMetadataBoundaries/other-provider (0.01s)
+=== RUN   TestTokensForEachIdentity
+=== RUN   TestTokensForEachIdentity/wallet-internal
+=== RUN   TestTokensForEachIdentity/provider-a
+=== RUN   TestTokensForEachIdentity/provider-b
+=== RUN   TestTokensForEachIdentity/provider-a-short-lived
+=== RUN   TestTokensForEachIdentity/no-roles
+--- PASS: TestTokensForEachIdentity (0.04s)
+    --- PASS: TestTokensForEachIdentity/wallet-internal (0.01s)
+    --- PASS: TestTokensForEachIdentity/provider-a (0.01s)
+    --- PASS: TestTokensForEachIdentity/provider-b (0.01s)
+    --- PASS: TestTokensForEachIdentity/provider-a-short-lived (0.01s)
+    --- PASS: TestTokensForEachIdentity/no-roles (0.01s)
+=== RUN   TestInvalidClientCredentialsAreRejected
+--- PASS: TestInvalidClientCredentialsAreRejected (0.03s)
+=== RUN   TestJWKSContainsSigningKey
+--- PASS: TestJWKSContainsSigningKey (0.01s)
+=== RUN   TestMigrationsRoundTrip
+--- PASS: TestMigrationsRoundTrip (0.77s)
+=== RUN   TestIntegrityMigrationPreservesExistingHistory
+--- PASS: TestIntegrityMigrationPreservesExistingHistory (0.56s)
+=== RUN   TestMigrationErrorsDoNotLeakPassword
+--- PASS: TestMigrationErrorsDoNotLeakPassword (0.01s)
+=== RUN   TestStage9ClaimsLeaseAndStaleConfirmation
+--- PASS: TestStage9ClaimsLeaseAndStaleConfirmation (0.83s)
+=== RUN   TestStage9RealPublishersRetryRecoveryAndSnapshots
+--- PASS: TestStage9RealPublishersRetryRecoveryAndSnapshots (7.61s)
+=== RUN   TestStage9UncommittedInvisibleAndNetworkOutsideWalletLock
+--- PASS: TestStage9UncommittedInvisibleAndNetworkOutsideWalletLock (0.59s)
+=== RUN   TestStage9WalletEventsMayArriveOutOfCommitOrder
+--- PASS: TestStage9WalletEventsMayArriveOutOfCommitOrder (0.90s)
+=== RUN   TestAppRoleIsLimited
+--- PASS: TestAppRoleIsLimited (0.02s)
+=== RUN   TestMigratorOwnsSchema
+--- PASS: TestMigratorOwnsSchema (0.02s)
+=== RUN   TestWrongPasswordIsRejected
+--- PASS: TestWrongPasswordIsRejected (0.01s)
+=== RUN   TestStage10ReconciliationExactSnapshotAndLargeTurnover
+--- PASS: TestStage10ReconciliationExactSnapshotAndLargeTurnover (0.99s)
+=== RUN   TestStage10FxAllRolesPublishesAndShutsDown
+--- PASS: TestStage10FxAllRolesPublishesAndShutsDown (1.34s)
+=== RUN   TestStage10RealAuthorizationMetricsAndDivergence
+--- PASS: TestStage10RealAuthorizationMetricsAndDivergence (0.68s)
+=== RUN   TestStage10ReconciliationFinalOverflowIsExplicit
+--- PASS: TestStage10ReconciliationFinalOverflowIsExplicit (0.49s)
+=== RUN   TestStage7DurableResolutionAndCombinedReversals
+--- PASS: TestStage7DurableResolutionAndCombinedReversals (0.70s)
+=== RUN   TestStage7ExpiryTerminalInvalidAndInsufficient
+--- PASS: TestStage7ExpiryTerminalInvalidAndInsufficient (0.69s)
+=== RUN   TestStage7WorkersCompeteAndSkipLockedWallet
+--- PASS: TestStage7WorkersCompeteAndSkipLockedWallet (2.22s)
+=== RUN   TestStage7RecoveryRollbackAtEveryWrite
+=== RUN   TestStage7RecoveryRollbackAtEveryWrite/0
+=== RUN   TestStage7RecoveryRollbackAtEveryWrite/1
+=== RUN   TestStage7RecoveryRollbackAtEveryWrite/2
+=== RUN   TestStage7RecoveryRollbackAtEveryWrite/3
+=== RUN   TestStage7RecoveryRollbackAtEveryWrite/4
+=== RUN   TestStage7RecoveryRollbackAtEveryWrite/5
+--- PASS: TestStage7RecoveryRollbackAtEveryWrite (3.38s)
+    --- PASS: TestStage7RecoveryRollbackAtEveryWrite/0 (0.54s)
+    --- PASS: TestStage7RecoveryRollbackAtEveryWrite/1 (0.60s)
+    --- PASS: TestStage7RecoveryRollbackAtEveryWrite/2 (0.56s)
+    --- PASS: TestStage7RecoveryRollbackAtEveryWrite/3 (0.59s)
+    --- PASS: TestStage7RecoveryRollbackAtEveryWrite/4 (0.52s)
+    --- PASS: TestStage7RecoveryRollbackAtEveryWrite/5 (0.56s)
+=== RUN   TestStage7PendingChain
+--- PASS: TestStage7PendingChain (0.55s)
+=== RUN   TestStage7AbandonedDatabaseSession
+--- PASS: TestStage7AbandonedDatabaseSession (0.56s)
+=== RUN   TestStage7DirectRollbackDirections
+--- PASS: TestStage7DirectRollbackDirections (0.46s)
+=== RUN   TestStage7PermanentFailureIsDurableAndTerminal
+--- PASS: TestStage7PermanentFailureIsDurableAndTerminal (0.63s)
+=== RUN   TestStage7TransientFailureNeverFinalizes
+--- PASS: TestStage7TransientFailureNeverFinalizes (0.52s)
+=== RUN   TestStage7KnownClaimFailureIsAudited
+--- PASS: TestStage7KnownClaimFailureIsAudited (0.51s)
+=== RUN   TestDatabasePreventsLostUpdateWithoutAppLock
+--- PASS: TestDatabasePreventsLostUpdateWithoutAppLock (0.62s)
+=== RUN   TestDatabaseRejectsBlindBalanceOverwrite
+--- PASS: TestDatabaseRejectsBlindBalanceOverwrite (0.50s)
+=== RUN   TestDatabasePreventsConcurrentDoubleReversal
+--- PASS: TestDatabasePreventsConcurrentDoubleReversal (0.50s)
+=== RUN   TestSchemaAcceptsCoherentHistory
+--- PASS: TestSchemaAcceptsCoherentHistory (0.04s)
+=== RUN   TestWalletProtections
+=== RUN   TestWalletProtections/negative_balance
+=== RUN   TestWalletProtections/one_wallet_per_player_and_currency
+=== RUN   TestWalletProtections/unsupported_currency
+=== RUN   TestWalletProtections/balance_without_opening_entry
+=== RUN   TestWalletProtections/balance_change_without_ledger_entry
+=== RUN   TestWalletProtections/version_without_balance_change
+=== RUN   TestWalletProtections/version_must_increase_by_exactly_one
+=== RUN   TestWalletProtections/app_cannot_change_identity_columns
+=== RUN   TestWalletProtections/owner_cannot_change_identity_either
+=== RUN   TestWalletProtections/no_delete
+--- PASS: TestWalletProtections (0.21s)
+    --- PASS: TestWalletProtections/negative_balance (0.01s)
+    --- PASS: TestWalletProtections/one_wallet_per_player_and_currency (0.02s)
+    --- PASS: TestWalletProtections/unsupported_currency (0.02s)
+    --- PASS: TestWalletProtections/balance_without_opening_entry (0.02s)
+    --- PASS: TestWalletProtections/balance_change_without_ledger_entry (0.02s)
+    --- PASS: TestWalletProtections/version_without_balance_change (0.03s)
+    --- PASS: TestWalletProtections/version_must_increase_by_exactly_one (0.03s)
+    --- PASS: TestWalletProtections/app_cannot_change_identity_columns (0.02s)
+    --- PASS: TestWalletProtections/owner_cannot_change_identity_either (0.02s)
+    --- PASS: TestWalletProtections/no_delete (0.03s)
+=== RUN   TestLedgerProtections
+=== RUN   TestLedgerProtections/app_cannot_update,_delete_or_truncate
+=== RUN   TestLedgerProtections/owner_cannot_update,_delete_or_truncate_either
+=== RUN   TestLedgerProtections/equation
+=== RUN   TestLedgerProtections/chain:_balance_before_must_be_the_previous_balance_after
+=== RUN   TestLedgerProtections/chain:_versions_are_consecutive
+=== RUN   TestLedgerProtections/only_processed_transactions
+=== RUN   TestLedgerProtections/direction_follows_the_kind
+=== RUN   TestLedgerProtections/amount_equals_the_transaction
+=== RUN   TestLedgerProtections/one_entry_per_transaction
+=== RUN   TestLedgerProtections/entry_without_balance_update
+--- PASS: TestLedgerProtections (0.36s)
+    --- PASS: TestLedgerProtections/app_cannot_update,_delete_or_truncate (0.08s)
+    --- PASS: TestLedgerProtections/owner_cannot_update,_delete_or_truncate_either (0.07s)
+    --- PASS: TestLedgerProtections/equation (0.03s)
+    --- PASS: TestLedgerProtections/chain:_balance_before_must_be_the_previous_balance_after (0.02s)
+    --- PASS: TestLedgerProtections/chain:_versions_are_consecutive (0.03s)
+    --- PASS: TestLedgerProtections/only_processed_transactions (0.02s)
+    --- PASS: TestLedgerProtections/direction_follows_the_kind (0.02s)
+    --- PASS: TestLedgerProtections/amount_equals_the_transaction (0.03s)
+    --- PASS: TestLedgerProtections/one_entry_per_transaction (0.03s)
+    --- PASS: TestLedgerProtections/entry_without_balance_update (0.03s)
+=== RUN   TestTransactionProtections
+=== RUN   TestTransactionProtections/idempotency_key_unique_per_provider
+=== RUN   TestTransactionProtections/same_key_for_another_provider_is_independent
+=== RUN   TestTransactionProtections/external_id_cannot_be_reused_with_another_key
+=== RUN   TestTransactionProtections/one_opening_per_wallet
+=== RUN   TestTransactionProtections/one_successful_reversal_per_transaction
+=== RUN   TestTransactionProtections/rejected_reversal_does_not_consume_the_reference
+=== RUN   TestTransactionProtections/terminal_state_is_immutable
+=== RUN   TestTransactionProtections/financial_data_immutable:_app_lacks_the_column_privilege
+=== RUN   TestTransactionProtections/financial_data_immutable:_owner_blocked_by_trigger
+=== RUN   TestTransactionProtections/pending_reference_cannot_go_back_to_pending
+=== RUN   TestTransactionProtections/no_delete
+=== RUN   TestTransactionProtections/LOSS_must_be_zero
+=== RUN   TestTransactionProtections/BET_must_be_positive
+=== RUN   TestTransactionProtections/BET_cannot_have_a_reference
+=== RUN   TestTransactionProtections/REFUND_requires_a_reference
+=== RUN   TestTransactionProtections/rejected_requires_a_failure_code
+=== RUN   TestTransactionProtections/rejected_cannot_use_a_FAILED_code
+=== RUN   TestTransactionProtections/processed_requires_result_balance
+=== RUN   TestTransactionProtections/external_metadata_format
+=== RUN   TestTransactionProtections/OPENING_cannot_be_external
+=== RUN   TestTransactionProtections/external_operation_without_provider_(NULL_must_not_pass_the_CHECK)
+=== RUN   TestTransactionProtections/processed_operation_needs_its_ledger_entry
+=== RUN   TestTransactionProtections/processed_operation_matches_the_wallet_currency
+=== RUN   TestTransactionProtections/processed_reversal_must_reference_the_same_wallet
+--- PASS: TestTransactionProtections (0.53s)
+    --- PASS: TestTransactionProtections/idempotency_key_unique_per_provider (0.02s)
+    --- PASS: TestTransactionProtections/same_key_for_another_provider_is_independent (0.02s)
+    --- PASS: TestTransactionProtections/external_id_cannot_be_reused_with_another_key (0.02s)
+    --- PASS: TestTransactionProtections/one_opening_per_wallet (0.02s)
+    --- PASS: TestTransactionProtections/one_successful_reversal_per_transaction (0.03s)
+    --- PASS: TestTransactionProtections/rejected_reversal_does_not_consume_the_reference (0.03s)
+    --- PASS: TestTransactionProtections/terminal_state_is_immutable (0.03s)
+    --- PASS: TestTransactionProtections/financial_data_immutable:_app_lacks_the_column_privilege (0.02s)
+    --- PASS: TestTransactionProtections/financial_data_immutable:_owner_blocked_by_trigger (0.02s)
+    --- PASS: TestTransactionProtections/pending_reference_cannot_go_back_to_pending (0.02s)
+    --- PASS: TestTransactionProtections/no_delete (0.02s)
+    --- PASS: TestTransactionProtections/LOSS_must_be_zero (0.02s)
+    --- PASS: TestTransactionProtections/BET_must_be_positive (0.02s)
+    --- PASS: TestTransactionProtections/BET_cannot_have_a_reference (0.02s)
+    --- PASS: TestTransactionProtections/REFUND_requires_a_reference (0.02s)
+    --- PASS: TestTransactionProtections/rejected_requires_a_failure_code (0.02s)
+    --- PASS: TestTransactionProtections/rejected_cannot_use_a_FAILED_code (0.02s)
+    --- PASS: TestTransactionProtections/processed_requires_result_balance (0.02s)
+    --- PASS: TestTransactionProtections/external_metadata_format (0.02s)
+    --- PASS: TestTransactionProtections/OPENING_cannot_be_external (0.02s)
+    --- PASS: TestTransactionProtections/external_operation_without_provider_(NULL_must_not_pass_the_CHECK) (0.02s)
+    --- PASS: TestTransactionProtections/processed_operation_needs_its_ledger_entry (0.03s)
+    --- PASS: TestTransactionProtections/processed_operation_matches_the_wallet_currency (0.02s)
+    --- PASS: TestTransactionProtections/processed_reversal_must_reference_the_same_wallet (0.03s)
+=== RUN   TestInboxAndOutboxProtections
+=== RUN   TestInboxAndOutboxProtections/inbox:_one_message_per_consumer
+=== RUN   TestInboxAndOutboxProtections/inbox_is_append-only
+=== RUN   TestInboxAndOutboxProtections/outbox_payload_is_immutable
+=== RUN   TestInboxAndOutboxProtections/outbox_publication_is_final
+=== RUN   TestInboxAndOutboxProtections/outbox_events_are_not_deleted
+--- PASS: TestInboxAndOutboxProtections (0.11s)
+    --- PASS: TestInboxAndOutboxProtections/inbox:_one_message_per_consumer (0.02s)
+    --- PASS: TestInboxAndOutboxProtections/inbox_is_append-only (0.03s)
+    --- PASS: TestInboxAndOutboxProtections/outbox_payload_is_immutable (0.03s)
+    --- PASS: TestInboxAndOutboxProtections/outbox_publication_is_final (0.02s)
+    --- PASS: TestInboxAndOutboxProtections/outbox_events_are_not_deleted (0.01s)
+=== RUN   TestAppHasNoExtraPrivileges
+--- PASS: TestAppHasNoExtraPrivileges (0.08s)
+=== RUN   TestQueuesAreProvisioned
+--- PASS: TestQueuesAreProvisioned (0.16s)
+=== RUN   TestLeastPrivilegePolicies
+--- PASS: TestLeastPrivilegePolicies (0.17s)
+=== RUN   TestBrokerRejectsAuthenticationBypass
+=== RUN   TestBrokerRejectsAuthenticationBypass/wrong_secret_is_rejected
+=== RUN   TestBrokerRejectsAuthenticationBypass/built-in_root_keys_are_rejected
+--- PASS: TestBrokerRejectsAuthenticationBypass (0.04s)
+    --- PASS: TestBrokerRejectsAuthenticationBypass/wrong_secret_is_rejected (0.00s)
+    --- PASS: TestBrokerRejectsAuthenticationBypass/built-in_root_keys_are_rejected (0.00s)
+PASS
+ok  	jungle-gaming-backend/tests/integration	273.464s
+ Container jungle-gaming-validation-74887ba27953-distributed-0c004f1df7f54064bc2da777da0354b4 Creating 
+ Container jungle-gaming-validation-74887ba27953-distributed-0c004f1df7f54064bc2da777da0354b4 Created 
+PASS: distributed integration; evidence: <isolated-source>\tests\.stage11-f8740a4d9850441f91440e1e7d16b4fc

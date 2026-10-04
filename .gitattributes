@@ -1,0 +1,5 @@
+# Preserve the validated bytes and the delivery SHA256 manifest across Git/ZIP.
+# Shell scripts already contain Linux-compatible line endings.
+* -text
+*.png binary
+*.jpg binary

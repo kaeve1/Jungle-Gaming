@@ -1,0 +1,21 @@
+.env
+.env.*
+!.env.example
+bin/
+tmp/
+coverage/
+*.test
+coverage.out
+*.log
+.DS_Store
+Thumbs.db
+
+/tests/.stage11-*/
+
+__pycache__/
+
+*.py[cod]
+
+# Published validation evidence referenced by the technical documentation.
+!docs/evidence/*.log
+!docs/evidence/**/*.log

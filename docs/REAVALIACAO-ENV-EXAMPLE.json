@@ -1,0 +1,212 @@
+{
+  "date": "2026-10-04",
+  "project": "jungle-gaming-validation-74887ba27953",
+  "basis": "raw exercise, source inspection and newly executed tests; no previous PASS reused",
+  "status": "PASS_WITH_DOCUMENTED_LIMITATIONS",
+  "env": {
+    "project": "jungle-gaming-validation-74887ba27953",
+    "exampleEnvCopiedExactly": true,
+    "ports": {
+      "api": 18081,
+      "idp": 18080,
+      "postgres": 15432
+    },
+    "roles": "api,reference-worker,consumer,outbox-publisher",
+    "envSha256": "2B9E0F53E66650D100F849CC468432A91C3488A2C1039F41645077FCE9D6F7C5"
+  },
+  "integrationPassed": 80,
+  "integrationSeconds": "273.464",
+  "parentOnlyHelpersSkipped": [
+    "TestStage8CrashConsumerHelper",
+    "TestStage11ProcessHelper"
+  ],
+  "externalHTTPGroupsPassed": 7,
+  "externalOperationalGroupsPassed": 5,
+  "parserFuzzExecutions": 38213,
+  "runtimeFilesUnchanged": 104,
+  "firstAttempt": "Operational readiness probe used a fixed tests/validation.env absent in exact-example copy; cleanup stop error masked original compose failure. Corrected env-file argument and conditional container cleanup; all five groups rerun PASS.",
+  "items": [
+    {
+      "section": "1",
+      "topic": "Objetivo",
+      "assessment": "HTTP e consumidor usam o mesmo caso de uso; saldo/ledger recuperáveis entre processos.",
+      "source": "internal/application/service.go; internal/application/inbox.go",
+      "newEvidence": "TestStage11ThreeProcessesConcurrencyRestartAndTransports"
+    },
+    {
+      "section": "2",
+      "topic": "Autenticação e autorização",
+      "assessment": "Keycloak real, client_credentials, issuer/audience/assinatura/exp; identidade determina provider; consultas/replay isolados e carteira/metrics internos. Credenciais e políticas do broker verificadas.",
+      "source": "internal/adapters/auth/verifier.go; deploy/keycloak; deploy/sqs/strict",
+      "newEvidence": "TestStage6AuthenticatedHTTPAndProviderIsolation; TestStage6ExpiredAndForgedKeycloakTokens; TestBrokerRejectsAuthenticationBypass"
+    },
+    {
+      "section": "3",
+      "topic": "Falhas distribuídas",
+      "assessment": "Duplicatas HTTP/SQS, referência antecipada, disputas, morte antes/depois do commit e interrupção de dependências.",
+      "source": "internal/application; tests/integration",
+      "newEvidence": "TestStage11HTTPKillBeforeAndAfterCommit; TestStage11RealContainerOutagesAndRecovery; TestStage11FxConsumerKilledAfterCommitBeforeDelete"
+    },
+    {
+      "section": "4",
+      "topic": "Stack e persistência",
+      "assessment": "Go declarado, Modules/sum, Fx, net/http, pgx com SQL explícito, PostgreSQL, MiniStack adaptado e Compose; migrations up/down testadas.",
+      "source": "go.mod; Dockerfile; compose.yaml; migrations; ARCHITECTURE.md",
+      "newEvidence": "check.log; TestMigrationsRoundTrip; TestIntegrityMigrationPreservesExistingHistory"
+    },
+    {
+      "section": "4",
+      "topic": "Fx e I/O",
+      "assessment": "Construtores e módulos; startup validado; contextos/prazos; ordem de parada, término de workers e dependências fechadas.",
+      "source": "internal/bootstrap; internal/adapters/runtime",
+      "newEvidence": "TestStage10FxAllRolesPublishesAndShutsDown; TestStage6TransientHTTPFailureAndLifecycle; stop-api.log"
+    },
+    {
+      "section": "5",
+      "topic": "Garantias financeiras",
+      "assessment": "Dinheiro inteiro; idempotência e invariantes no banco; eventos só pós-commit; ledger imutável; coordenação por carteira; sem lost updates.",
+      "source": "internal/domain/money; internal/adapters/postgres; migrations",
+      "newEvidence": "TestDatabasePreventsLostUpdateWithoutAppLock; TestLedgerProtections; TestStage9UncommittedInvisibleAndNetworkOutsideWalletLock"
+    },
+    {
+      "section": "6",
+      "topic": "Encapsulamento",
+      "assessment": "Estado privado, criação/reidratação separadas, zero values rejeitados, erros classificáveis e I/O com contexto; domínio sem bibliotecas de infraestrutura.",
+      "source": "internal/domain; internal/archtest",
+      "newEvidence": "check.log (unitários -race e testes de arquitetura)"
+    },
+    {
+      "section": "6.1",
+      "topic": "Money",
+      "assessment": "String decimal/duas casas/BRL; sem float, arredondamento ou exponencial; compatibilidade de moedas e overflow em parsing/soma/subtração/negação; BIGINT e moeda exatos.",
+      "source": "internal/domain/money; ARCHITECTURE.md",
+      "newEvidence": "check.log; reviewer-domain-race.log; final-blackbox.json"
+    },
+    {
+      "section": "6.2",
+      "topic": "Wallet",
+      "assessment": "Unicidade jogador/moeda, identidade/timestamps, saldo não negativo, ledger no mesmo commit; versão inicial1, incrementada só por mudança efetiva.",
+      "source": "internal/domain/wallet.go; internal/adapters/postgres; migrations",
+      "newEvidence": "TestWalletProtections; TestStage5OpeningAndBusinessResults; exercise-examples.json"
+    },
+    {
+      "section": "6.3",
+      "topic": "WagerTransaction",
+      "assessment": "Metadados, chave/hash, referência resolvida, estados/resultado/failureCode persistidos; estados terminais protegidos. Sem commit intermediário de PENDING. FAILED durável no worker; erro síncrono desfaz operação.",
+      "source": "internal/domain/transaction.go; internal/domain/processing.go; migrations",
+      "newEvidence": "TestTransactionProtections; TestStage7PermanentFailureIsDurableAndTerminal; TestStage7TransientFailureNeverFinalizes"
+    },
+    {
+      "section": "6.3",
+      "topic": "OPENING",
+      "assessment": "Origem interna distinta e crédito único; valor positivo cria ledger e dois eventos no commit, versão1; zero não cria eventos financeiros; proibida externamente.",
+      "source": "internal/domain/opening.go; internal/application/service.go; migrations",
+      "newEvidence": "TestStage5OpeningAndBusinessResults; TestStage6StrictJSONAndLedgerPagination; final-blackbox.json"
+    },
+    {
+      "section": "6.4",
+      "topic": "Ledger",
+      "assessment": "Lançamento validado antes/depois/direção, unicidade carteira/transação e bloqueio de edição/exclusão; LOSS/rejeição sem lançamento.",
+      "source": "internal/domain/ledger.go; migrations",
+      "newEvidence": "TestLedgerProtections; TestSchemaAcceptsCoherentHistory; TestStage5OpeningAndBusinessResults"
+    },
+    {
+      "section": "6.5",
+      "topic": "Inbox/outbox",
+      "assessment": "Identidade/hash/conclusão, eventos com snapshot imutável, tentativas/lease/backoff; inbox e domínio compartilham UOW.",
+      "source": "internal/application/inbox.go; internal/adapters/postgres/outbox.go; migrations",
+      "newEvidence": "TestStage8InboxRollbackAtEveryWrite; TestInboxAndOutboxProtections"
+    },
+    {
+      "section": "7",
+      "topic": "Tipos e reversões",
+      "assessment": "Cinco tipos/valores zero, referências por provedor, jogador/carteira/moeda/rodada e valor integral; direções corretas, devolução única, insuficiência de reversão distinta de BET.",
+      "source": "internal/domain/request.go; internal/domain/processing.go; ARCHITECTURE.md",
+      "newEvidence": "TestStage7DirectRollbackDirections; TestStage7DurableResolutionAndCombinedReversals; TestStage12ReferenceMetadataBoundaries; final-blackbox.json"
+    },
+    {
+      "section": "7",
+      "topic": "Referências pendentes",
+      "assessment": "Pendência durável, backoff exponencial/TTL, retomada após restart, referência pendente/terminal inválida e expiração REFERENCE_NOT_FOUND com rejeição/evento.",
+      "source": "internal/application/references.go; internal/adapters/referenceworker; internal/domain/processing.go",
+      "newEvidence": "TestStage11ReferencesExpireAndInvalidAcrossProcesses; TestStage7PendingChain; TestStage7RecoveryRollbackAtEveryWrite"
+    },
+    {
+      "section": "8",
+      "topic": "Concorrência",
+      "assessment": "Três processos Fx e três containers cmd/service; 100.00 e duas BET80.00 resultam20.00/um débito/uma rejeição; 50 duplicatas e outras carteiras em paralelo.",
+      "source": "internal/adapters/postgres/uow.go; tests/integration; tests/reviewer/blackbox.py",
+      "newEvidence": "TestStage11ThreeProcessesConcurrencyRestartAndTransports; TestStage12ThreeProcessesContestReplays; final-blackbox.json"
+    },
+    {
+      "section": "9",
+      "topic": "HTTP e idempotência",
+      "assessment": "Abertura/leitura/ledger opaco/consultas isoladas/envio com chave recebida; SHA256 de JSON canônico sem transporte/chave; normalizações documentadas; conflitos/pendências/erros distinguíveis e resultado original no replay.",
+      "source": "internal/adapters/http; internal/domain/request.go; docs/CONTRATOS.md",
+      "newEvidence": "TestStage6AmbiguousHeadersRejected; TestStage6StrictJSONAndLedgerPagination; exercise-examples.json; final-blackbox.json"
+    },
+    {
+      "section": "9",
+      "topic": "Reconciliação e health",
+      "assessment": "Snapshot SQL único, abertura incluída, stored-calculated; sem modificar saldo; divergência em resposta/log/métrica; live/ready públicos e filas configuradas verificadas.",
+      "source": "internal/adapters/postgres/reconciliation.go; internal/adapters/health; internal/adapters/observability",
+      "newEvidence": "TestStage10ReconciliationExactSnapshotAndLargeTurnover; TestStage10RealAuthorizationMetricsAndDivergence; final-operations.json; exercise-examples.json"
+    },
+    {
+      "section": "10",
+      "topic": "SQS",
+      "assessment": "FIFO/DLQ/redrive provisionados; envelope estrito/messageId+hash duráveis; ACK pós-commit, rejeição terminal, retry/backoff e inválidas/exaustão para DLQ. Group=wallet canônica e dedup não substitui aplicação.",
+      "source": "deploy/sqs; internal/adapters/sqsconsumer; ARCHITECTURE.md",
+      "newEvidence": "TestQueuesAreProvisioned; TestStage8MalformedMessagesReachRealDLQ; TestStage8ExhaustedTransientRetryReachesDLQ; TestStage8GroupsParallelAndRetryKeepsFIFOOrder"
+    },
+    {
+      "section": "10",
+      "topic": "SQS shutdown e equivalência",
+      "assessment": "Para busca em SIGTERM, conclui/libera visibilidade; HTTP/SQS mesma operação e inbox atômica, inclusive referência pendente.",
+      "source": "internal/adapters/sqsconsumer/worker.go; internal/application/inbox.go",
+      "newEvidence": "TestStage8RealConsumerHTTPAndPendingReference; TestStage11FxConsumerKilledAfterCommitBeforeDelete; TestStage10FxAllRolesPublishesAndShutsDown"
+    },
+    {
+      "section": "11",
+      "topic": "Transactional outbox",
+      "assessment": "Atomicidade e publicação pós-commit, workers concorrentes com SKIP LOCKED/lease/backoff; evento recuperado e eventId estável depois de send sem confirmação.",
+      "source": "internal/adapters/postgres/outbox.go; internal/adapters/outboxpublisher; migrations",
+      "newEvidence": "TestStage9ClaimsLeaseAndStaleConfirmation; TestStage11FxPublishersKilledBeforeSendAndBeforeConfirmation; TestStage9RealPublishersRetryRecoveryAndSnapshots"
+    },
+    {
+      "section": "11",
+      "topic": "Eventos e destino",
+      "assessment": "Quatro tipos concretos/envelope versionado por construtor/UTC/RFC3339/money string; WalletBalanceChanged completo. wallet-events.fifo documentada; snapshots e eventId imutáveis.",
+      "source": "internal/domain/events.go; ARCHITECTURE.md; docs/CONTRATOS.md",
+      "newEvidence": "check.log (eventos unitários); TestStage9RealPublishersRetryRecoveryAndSnapshots; TestStage9WalletEventsMayArriveOutOfCommitOrder"
+    },
+    {
+      "section": "12",
+      "topic": "Observabilidade",
+      "assessment": "Logs JSON com identidades disponíveis e erros sanitizados; métricas por status/duplicata/retry/DLQ/conflito/outbox/latência/divergência, sem IDs como labels.",
+      "source": "internal/adapters/observability/diagnostics.go; docs/ROTEIRO-DE-AVALIACAO.md",
+      "newEvidence": "TestStage12ReferenceLogKeepsInputMessageIdentity; TestStage12FailedMetricRequiresConfirmedAudit; final-operations.json"
+    },
+    {
+      "section": "13",
+      "topic": "Verificação obrigatória",
+      "assessment": "Unitários, real containers, schema/atomicidade, Fx lifecycle, auth, 50 duplicatas, disputa80/100, paralelismo, três processos, crash/ACK/publish/referências/restart/HTTP-SQS com reconciliação e race.",
+      "source": "tests/integration; internal; tests/reviewer",
+      "newEvidence": "distributed.log (80 PASS); check.log; final-blackbox.json; final-operations.json"
+    },
+    {
+      "section": "14",
+      "topic": "Eliminatórios e opcionais",
+      "assessment": "Nenhum eliminatório reproduzido nesta rodada; garantias anteriores cobrem os dez. Carga, partidas dobradas, tracing e dashboards opcionais não implementados; pontuação cabe ao avaliador.",
+      "source": "docs/DESAFIO-ORIGINAL.md; ARCHITECTURE.md",
+      "newEvidence": "Logs e resultados novos desta revisão"
+    },
+    {
+      "section": "15",
+      "topic": "Entrega",
+      "assessment": "Código/migrations/Compose/env example/IdP/filas e identidades locais; README pré-requisitos, startup/down, exemplos autenticados, testes/tags; decisões e limites em arquitetura. Sem publicação.",
+      "source": "README.md; ARCHITECTURE.md; .env.example; docs; scripts",
+      "newEvidence": "startup-build.log; demo.log; check.log; migration-version.log; revisão documental"
+    }
+  ]
+}

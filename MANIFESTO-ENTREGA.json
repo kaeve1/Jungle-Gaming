@@ -1,0 +1,786 @@
+{
+  "date": "2026-10-04",
+  "algorithm": "SHA256",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "470ff4b9c68bff45336d084be2b761377fd66d3ae972a70c08152939d5d87ccd"
+    },
+    {
+      "path": ".env.example",
+      "sha256": "2b9e0f53e66650d100f849cc468432a91c3488a2c1039f41645077fce9d6f7c5"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "d2f5b856c220193d5c5aa6b93f1819b589b55159466f6e1c2c2819d2f28f7954"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "b479068a9fbae60e97deeff2c44c469d61ebd2e6a30b68f331ed7013f9bf4308"
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "sha256": "48fe585966723733b3b2702769a1b701045111b32ebb648c2b9f062082dae577"
+    },
+    {
+      "path": "cmd/migrate/main.go",
+      "sha256": "f63e5ae84614ab28a5c5ea4e8315beb642298f4f95941e2f1d615899ea42df1e"
+    },
+    {
+      "path": "cmd/README.md",
+      "sha256": "8e780eb7522af41fa69cca378d3e4148bf89fc0552e2e01887f2a6f860528f02"
+    },
+    {
+      "path": "cmd/service/main.go",
+      "sha256": "abc61e9d09a22c6218c65b4f50e79e63ac82192637291f676ba4d26650a249a5"
+    },
+    {
+      "path": "compose.yaml",
+      "sha256": "589ca3648aff6c82b1987fde32e290d8a4396f2e7d6d9c47e98ad7e5990365d2"
+    },
+    {
+      "path": "deploy/keycloak/realm-jungle-gaming.json",
+      "sha256": "fe7324721d246984a229a8f97ea618f00a2f15267105d34374588ce316a143ee"
+    },
+    {
+      "path": "deploy/postgres/init/01-roles.sh",
+      "sha256": "b761bde1ddab9a8f3467aad1eabace5fa4aea26577848681e543baeab5ba5931"
+    },
+    {
+      "path": "deploy/README.md",
+      "sha256": "1b19f19e2293e2c6da2ca2ef0f91fad9d0f7b4df9e47266f14a7673e28712819"
+    },
+    {
+      "path": "deploy/sqs/init.sh",
+      "sha256": "453352c4772b0ed5491f6fe3fcce7aac0c60b65c7e92d84cace74dd70132754d"
+    },
+    {
+      "path": "deploy/sqs/strict/Dockerfile",
+      "sha256": "8dc30f67e2a4e28f4f908ce2b949b83b63b28aef6d0609e8f35bf6dad316ee3e"
+    },
+    {
+      "path": "deploy/sqs/strict/durable_state.py",
+      "sha256": "805d0caeee1e8c23202a0ce9e9b49e780d6b5a1d5fbd18fac8641913f7f8eb44"
+    },
+    {
+      "path": "deploy/sqs/strict/README.md",
+      "sha256": "ec8e76abbfc61cae3de0895c13bbbbb06d935a09a1de0d688c5c1426963ee815"
+    },
+    {
+      "path": "deploy/sqs/strict/run.py",
+      "sha256": "9aabf8d41f1e4efcfe9e744808d28886a57dced1303d89a360cce474112b4f22"
+    },
+    {
+      "path": "deploy/sqs/strict/strict_auth.py",
+      "sha256": "e8d0c6aa6ed0015623f339e460d7eb81ba724c2a95b2c108c2945395361adda6"
+    },
+    {
+      "path": "deploy/sqs/strict/test_durable_state.py",
+      "sha256": "9b11b5c3c749b775dc5135ce49c64b392b1c2b1e311e0ebaa5603c68035c1c2b"
+    },
+    {
+      "path": "deploy/sqs/strict/test_strict_auth.py",
+      "sha256": "fa75bc41f4ba26b4d5b95ecc3de97e1048cbf354c9864243c194a43d46a9a01a"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "343c7c96d104ed1f36df15e6d5e58abe2e1bdc79559902c9ed100ece8624a5f9"
+    },
+    {
+      "path": "docs/CONFORMIDADE.json",
+      "sha256": "e9bfc5035e3fa447b8942bcbd80b0b4cdc2b88abafac60753239b70e6bad1604"
+    },
+    {
+      "path": "docs/CONFORMIDADE.md",
+      "sha256": "0e82c63f3e872c0706e0d6642ac5ca055445e35e1458e163e7f49780d49921e6"
+    },
+    {
+      "path": "docs/CONTRATOS.md",
+      "sha256": "068016070e16172c4ea7e5e0bea4131ee41393d3b2a94118b612172294ad08fb"
+    },
+    {
+      "path": "docs/DESAFIO-ORIGINAL.md",
+      "sha256": "89d5d4656be3112f7f8fcba127a9ba6fe6fe2aeda557753f96276c7a77a9eba9"
+    },
+    {
+      "path": "docs/ESTRUTURA.md",
+      "sha256": "63b23ba7ba4998afe6263e7cb742ed1d45bad53faa0c36a968895edb03e5e956"
+    },
+    {
+      "path": "docs/evidence/broker-python-tests.log",
+      "sha256": "0b22bfa7f70d89b73174df63695d48a59814b0f4c496760886cff2a8ed8bad09"
+    },
+    {
+      "path": "docs/evidence/check.log",
+      "sha256": "d8d21c309bc2f8ec14d6fe397be7306fc7fb9b1e807d7803692bf5d45ee69d93"
+    },
+    {
+      "path": "docs/evidence/demo.log",
+      "sha256": "32cff3398b0429da2316b24fe338b02d4337e9b7bc0dca6c352a08966eb2a9a2"
+    },
+    {
+      "path": "docs/evidence/distributed.log",
+      "sha256": "d87473898df7c7db0c96235f6e0e7c70325372a409938a3724703561f4c8615c"
+    },
+    {
+      "path": "docs/evidence/env-example/broker-python-tests.log",
+      "sha256": "b42c8ace93e8a668fdcc43c59fb10dff2df18be8d75d6b90bc84fee7af9aaf76"
+    },
+    {
+      "path": "docs/evidence/env-example/check.log",
+      "sha256": "cafddd1c18bf9a902d2ee7b70184bccb6a8ab93bf620dc146a20dfd02d802f03"
+    },
+    {
+      "path": "docs/evidence/env-example/cleanup.log",
+      "sha256": "2046a636a0b99f28f181880a77de3f24c6edb3bc1ac0bfaf4d7775a3175eb850"
+    },
+    {
+      "path": "docs/evidence/env-example/demo.log",
+      "sha256": "e302b4543837d653ee087ffe7698f23a5111de4af60fa1bf52a10142384a7e88"
+    },
+    {
+      "path": "docs/evidence/env-example/distributed.log",
+      "sha256": "eb19e71558812bbf2987951dc1045f2f2410291a76fcdcc412b7458e2285d7aa"
+    },
+    {
+      "path": "docs/evidence/env-example/example-env.json",
+      "sha256": "56be071768efed3cd899b221cdc93afeeda186837f237c8725e507e9c2dc80e9"
+    },
+    {
+      "path": "docs/evidence/env-example/exercise-examples.json",
+      "sha256": "f71cca2153d9bc3526c406075c3999be10e6b78573d7c0b08ee9ef9b46bbe9d9"
+    },
+    {
+      "path": "docs/evidence/env-example/exercise-examples.log",
+      "sha256": "857fb3fc81a19019cb4e28cf1ce74fe67a038276f32dc73ae8e7ad18c6dbafae"
+    },
+    {
+      "path": "docs/evidence/env-example/final-blackbox.json",
+      "sha256": "cb56425ebccdb417cb5b58e8cef393b14bcb20adc7eb7ae9fd7ca3edd2f14000"
+    },
+    {
+      "path": "docs/evidence/env-example/final-blackbox.log",
+      "sha256": "f2be6b7269b3ead96a3a3ffc3543d331b7db111a3c8a64df4a776d5af45acc09"
+    },
+    {
+      "path": "docs/evidence/env-example/final-operations.json",
+      "sha256": "f54cbf436407a4d1d07e22179b007008f39cfe842163af036c07e7c99b226332"
+    },
+    {
+      "path": "docs/evidence/env-example/final-operations.log",
+      "sha256": "251dd62143fcf45af9ae1ed3bf18d5b506aaa9bc6713d0864c02b3c265290ea8"
+    },
+    {
+      "path": "docs/evidence/env-example/final-probes-cleanup.log",
+      "sha256": "d8d57125d1f8e3234b2afac03f3bbe0257fb4f9e0477a11bea4acc2b5baa9089"
+    },
+    {
+      "path": "docs/evidence/env-example/final-real-services.json",
+      "sha256": "39914a3b9f21fc56adb60f5748cf7dcacab14a7537bc75d6aaeae8f002c51d3a"
+    },
+    {
+      "path": "docs/evidence/env-example/first-attempt-operations.json",
+      "sha256": "51e1ff8ce425a78828204faa60997e1d896c9ade4c3ba42710dd10d0db078d58"
+    },
+    {
+      "path": "docs/evidence/env-example/first-attempt-operations.log",
+      "sha256": "b66294c39cfcb126659441f070fa53b6c7488412e95e5d5cadabfd7ac626756f"
+    },
+    {
+      "path": "docs/evidence/env-example/migration-version.log",
+      "sha256": "d0c3106f5180ec8269876e481804188b6643465efc5768d20ef30d84710572bf"
+    },
+    {
+      "path": "docs/evidence/env-example/parser-fuzz.log",
+      "sha256": "cb0c64155c934c6583b023e5c5ddf5e276855e942d7b50cc70b9b75a141439bb"
+    },
+    {
+      "path": "docs/evidence/env-example/results.json",
+      "sha256": "466933efb975ca8d79726d8f2ee1af0263069580518c0ed76125a1488a97fc32"
+    },
+    {
+      "path": "docs/evidence/env-example/reviewer-domain-race.log",
+      "sha256": "af6840d346ccc96d6c47d8a367dab31bd2549b6dd6052f92a2f6550120ba0bdb"
+    },
+    {
+      "path": "docs/evidence/env-example/source-sha256.json",
+      "sha256": "73c02202db487516b6d5c7b8c9ffdfb8f64a586b561056caad5dc71c450a25a0"
+    },
+    {
+      "path": "docs/evidence/env-example/startup-build.log",
+      "sha256": "7c2e1280e965d98b679a58de91adcc4811ecc7726432b740fbda9a4b155a392f"
+    },
+    {
+      "path": "docs/evidence/env-example/stop-api.log",
+      "sha256": "adc5fe581defb6c5acc9b025e6c94cfd81bcb8bc6149a6207c698ef652e9e6a3"
+    },
+    {
+      "path": "docs/evidence/final-blackbox.json",
+      "sha256": "df8e1957a6fe46c0d103516acc4c94f5b053cd0b3b9d40d450b18e8303411a20"
+    },
+    {
+      "path": "docs/evidence/final-operations.json",
+      "sha256": "c14eeb0f5cc65506b26a50341dfabebb41c00837e2eb09e70ee251577e5d3d72"
+    },
+    {
+      "path": "docs/evidence/parser-fuzz.log",
+      "sha256": "b3e166f31c30c0f4e00a25c2d15bc52d75d90836b29b69bbc036b1c51498807f"
+    },
+    {
+      "path": "docs/evidence/results.json",
+      "sha256": "f3f6c1f318e16de322f7eb2df020a5e63f5b05c72d1260975fc42d534dec70c1"
+    },
+    {
+      "path": "docs/evidence/reviewer-domain-race.log",
+      "sha256": "b29c9f68f7fc20342e9538981dee9e4734752cf53d1fa4b2e8d07af58c2b3509"
+    },
+    {
+      "path": "docs/evidence/source-sha256.json",
+      "sha256": "568a5f5e74b32230b9e72d4729b5825022baae7e7cb0a2ae7601aa94f7097c24"
+    },
+    {
+      "path": "docs/EXPLICACAO-DO-PROJETO.md",
+      "sha256": "1530f6295a91d3d04d0a52fd92055d605ce1863cbf179a602dbdd82007c185d5"
+    },
+    {
+      "path": "docs/MATRIZ-REQUISITOS.md",
+      "sha256": "b552a4600534c5508f13bfb765af421a89891a8b093c8a392c7d3ad018c9b809"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "098c36d24fa9bb89a8277b5662e1cdd0f2441f18172876edd8aae1c9946068dc"
+    },
+    {
+      "path": "docs/REAVALIACAO-ENV-EXAMPLE.json",
+      "sha256": "ccfeb1148548a833bd68485b8e9db045538f215c577c751f3e3e7d16b23e4077"
+    },
+    {
+      "path": "docs/REAVALIACAO-ENV-EXAMPLE.md",
+      "sha256": "304a848d33efc39f118324822dc53b3cf5f1cf7af942864922f8cd40db4e580c"
+    },
+    {
+      "path": "docs/ROTEIRO-DE-AVALIACAO.md",
+      "sha256": "1c3cb65669e8cbb1cba7985c9e00d731c12fd59e499dc0ee086293e5764fcace"
+    },
+    {
+      "path": "docs/TESTES.md",
+      "sha256": "5b178eb1b27131ef7b272ab73b9ab808595e468ab47b0b4ba4b5d817a318f93f"
+    },
+    {
+      "path": "docs/VALIDACAO-FINAL.md",
+      "sha256": "84da5d194829369a913364fb1b4a8f1d92a6c51b18452a163e5467b69217eda8"
+    },
+    {
+      "path": "go.mod",
+      "sha256": "e9e100be12bdff48f440c61ce4e9448b427877768d35079ef4b9e5489e5661ba"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "b34a5b5c280aef695ae2a2912fd296021f769821c1ccb55f855755648e7046d9"
+    },
+    {
+      "path": "internal/adapters/auth/verifier.go",
+      "sha256": "936388c813ea7a1a6372e73079b96f656180642710ffd2025e108c479716180b"
+    },
+    {
+      "path": "internal/adapters/auth/verifier_test.go",
+      "sha256": "0e2ea26c76daa5afbbacf2fb4b49f782f40df97679c17208b59f8413d75245d5"
+    },
+    {
+      "path": "internal/adapters/health/health.go",
+      "sha256": "9722d0c1289fa8bec217c77b0dab63cce286f0f25f91cb14dca3c1d93dd233f8"
+    },
+    {
+      "path": "internal/adapters/http/errors.go",
+      "sha256": "d80bff04277ddcb1d318f6d60fab3dee09af619ffce33f63f31499745f63c6c0"
+    },
+    {
+      "path": "internal/adapters/http/handler.go",
+      "sha256": "83ecb89a85d3a7c31e2ef537c9795b842a5c8956a2c0a4da2aa69c40d94d86bb"
+    },
+    {
+      "path": "internal/adapters/http/json.go",
+      "sha256": "db6f2be7711e234ef3d1703f5cf2d67a753fd1c9c7d34ddaecbbe8ecc75157c8"
+    },
+    {
+      "path": "internal/adapters/http/quality_test.go",
+      "sha256": "b4bb7aa13cd315e01f5886ac8786cf7f7922cbdcd52495e46c683c675e462fe9"
+    },
+    {
+      "path": "internal/adapters/http/responses.go",
+      "sha256": "e4854ab4978ef56b4e6476704566cf35f3e8dfb0f208a2c698b3976eeabd7337"
+    },
+    {
+      "path": "internal/adapters/http/server.go",
+      "sha256": "c6d7ac9c82e89bd79725dc249c9efbc27d9d587eba81350a4e739ba9e232a9a6"
+    },
+    {
+      "path": "internal/adapters/http/server_test.go",
+      "sha256": "a57da591aa61125eca959d509f94ff6a8295ea924dc9693fe80e357485891935"
+    },
+    {
+      "path": "internal/adapters/jsonstrict/json.go",
+      "sha256": "77a6fc14aadc7bed1371ea6a57742a6b5f55100141b5367f7a1f1172e5b6f9ad"
+    },
+    {
+      "path": "internal/adapters/jsonstrict/json_test.go",
+      "sha256": "55c7a51942f92252135a397a0741b60675db00dcfeca028a814c4f0b0d403ed8"
+    },
+    {
+      "path": "internal/adapters/observability/diagnostics.go",
+      "sha256": "8463032c1c02120405951fe44ba7014ca73e0ffbab67a86c13acbb68ccc95df7"
+    },
+    {
+      "path": "internal/adapters/observability/diagnostics_test.go",
+      "sha256": "b44bd3634f3c3fe643d0f1a36775832a103d178e8e4c9701abaa79532c360164"
+    },
+    {
+      "path": "internal/adapters/outboxpublisher/worker.go",
+      "sha256": "d040840ffdc49f225ff75f05c47c1ef335d21f9af032a6054b3680812d074774"
+    },
+    {
+      "path": "internal/adapters/outboxpublisher/worker_test.go",
+      "sha256": "f575dfa57e4e76622dd8cf3bfb83b3a873167c657db64b03e5558fbf1a67feb7"
+    },
+    {
+      "path": "internal/adapters/postgres/cursor_test.go",
+      "sha256": "301e20f590657441c5827abb2a7987f9943f9646b1bc8108fb78c8e5bd52020b"
+    },
+    {
+      "path": "internal/adapters/postgres/errors_test.go",
+      "sha256": "08348f278fa9d3c32b26e2faf3d09877c83f147c0e1df692c00512a41dd17941"
+    },
+    {
+      "path": "internal/adapters/postgres/inbox.go",
+      "sha256": "8ab8544dad24d696a1f665f6faef0d58a6446dfdf6e71a9abd18562358cddb2a"
+    },
+    {
+      "path": "internal/adapters/postgres/outbox.go",
+      "sha256": "26cba41ac8aa6cfaef7f502ecde1c0dedd34460a03267aab775426a9ea264c01"
+    },
+    {
+      "path": "internal/adapters/postgres/pool_config_test.go",
+      "sha256": "0c20e9ccca7b38ae9a4c2896a7186fdada04f3739dbae79f080a92138a630e1b"
+    },
+    {
+      "path": "internal/adapters/postgres/reader.go",
+      "sha256": "581bc8f1e9f5ca7e3432c672b2ae7f0a5e4dddfbca0764b512e2b8fe773f4b54"
+    },
+    {
+      "path": "internal/adapters/postgres/reconciliation.go",
+      "sha256": "16d5c648b06c1d9580ca6950703359ecc28a204b24c6220b267ecb02d4eaa818"
+    },
+    {
+      "path": "internal/adapters/postgres/references.go",
+      "sha256": "3417193a96ced405e0866ced9fc804a171c057fe10bfda7329249aa567512a86"
+    },
+    {
+      "path": "internal/adapters/postgres/repositories.go",
+      "sha256": "ed476a02e5f55c5c145bba1f67be7155a0e6e730286038457600579e0f348d12"
+    },
+    {
+      "path": "internal/adapters/postgres/uow.go",
+      "sha256": "e2a92ea0278ec73e8011ce3a377d86bc3a4fa3fd8c0dfd4734ac59f46b4bafae"
+    },
+    {
+      "path": "internal/adapters/postgres/wallet_row.go",
+      "sha256": "1d2f3b83ed99d7c170f8eb2888c86a42dae0e5e8417515a458a7bb51493e10d0"
+    },
+    {
+      "path": "internal/adapters/postgres/wallet_row_test.go",
+      "sha256": "8be674139e9ba690e202d7da67d94a5e18c77a886df3054534dce68e362bfa65"
+    },
+    {
+      "path": "internal/adapters/referenceworker/worker.go",
+      "sha256": "f03765d85c8711958f47dbc932d5ae0ecfff63273245bd3f78e882a945b5d2d0"
+    },
+    {
+      "path": "internal/adapters/referenceworker/worker_test.go",
+      "sha256": "274974c4784207fa1068d4f01e477235e9239358afd84eb05f5514df43b9cca2"
+    },
+    {
+      "path": "internal/adapters/runtime/runtime.go",
+      "sha256": "79a15bf87395790b972e16382e1a5d78b669c385072c5cb4630135fbe2035729"
+    },
+    {
+      "path": "internal/adapters/sqsclient/client.go",
+      "sha256": "659e2223a5c8e4c1af8ce60f5b552d502311132a9be01d8fc357bd78b509cc83"
+    },
+    {
+      "path": "internal/adapters/sqsclient/client_test.go",
+      "sha256": "e40d04e9905498d13b5878621bfe8b3cd77b024fc1aa007a535df740197487e3"
+    },
+    {
+      "path": "internal/adapters/sqsconsumer/message.go",
+      "sha256": "561352bb82be2cd9238b71793ca27dc3f4c001e5e60a9fb7b16937ac52670434"
+    },
+    {
+      "path": "internal/adapters/sqsconsumer/message_test.go",
+      "sha256": "383648166201daa8df8f8b1e16d21beeee160727471da26b77b6019d4b0f71dd"
+    },
+    {
+      "path": "internal/adapters/sqsconsumer/worker.go",
+      "sha256": "8c8469ccf58596d9356bd3f732b63255a6c568a6211c417dabd10b3c2a77796b"
+    },
+    {
+      "path": "internal/adapters/sqsconsumer/worker_test.go",
+      "sha256": "267f02a05b47f03c15c1d53279b92c84d94b47854954da21358f13ebb7d5402e"
+    },
+    {
+      "path": "internal/application/diagnostics.go",
+      "sha256": "5ffd76b08e7f596222ccbddd1fed5a0aa97ca761b31f97e90c25b4b9e13c85f6"
+    },
+    {
+      "path": "internal/application/inbox.go",
+      "sha256": "3b890b443a89c850807020cf52fe07e7ac7a7bc1142bcbb1f3f387902fdd9a7c"
+    },
+    {
+      "path": "internal/application/outbox.go",
+      "sha256": "5e4cee4a6598e5b8417dbb4918763a5406d19a3eecf25cca089e83b3e27deef8"
+    },
+    {
+      "path": "internal/application/ports.go",
+      "sha256": "9cb0675e4823b6fc3f1fb61d5ab666b3e01dbbceeb1c35ced0d464f218cd83a4"
+    },
+    {
+      "path": "internal/application/quality_test.go",
+      "sha256": "dc843d148f0e8cf0d49cd95f976af43721450887ba255e03379aee14f7c7962c"
+    },
+    {
+      "path": "internal/application/queries.go",
+      "sha256": "c6511078a9000de66c4200cad718cfc55384b956dbe45765bc7595a931fa09f0"
+    },
+    {
+      "path": "internal/application/references.go",
+      "sha256": "760390c1210f0d31f7484d690ca548a00f01cdf767cfbe6d8b64d2e153114621"
+    },
+    {
+      "path": "internal/application/service.go",
+      "sha256": "fcff465e9b9ce231150f96267ff122e74cafda4576edc406161d24ea2c339151"
+    },
+    {
+      "path": "internal/archtest/doc.go",
+      "sha256": "9b47c3d124cef9856dd651b3c217f19d8bc743ebf496706580da1fe7631ab4ec"
+    },
+    {
+      "path": "internal/archtest/layers_test.go",
+      "sha256": "84500eb7610b0449fdf9a404d320c8875884a94b710432574896aef7b90288e1"
+    },
+    {
+      "path": "internal/bootstrap/bootstrap.go",
+      "sha256": "623e24a718c01ba9e045dfc45e5fe3fdf8a3b4b778bbe80a66d6257b487b0f16"
+    },
+    {
+      "path": "internal/bootstrap/bootstrap_test.go",
+      "sha256": "e72f7fd90331dc8c1b3718abe2fab601713caebc2e30f623dbc435677dda40f0"
+    },
+    {
+      "path": "internal/bootstrap/runtime.go",
+      "sha256": "56e6d8c07d94a3e82c27c7b53921aec28193c6d2a78d157ba2e5c922d4d464ac"
+    },
+    {
+      "path": "internal/config/config.go",
+      "sha256": "f88b848227c41563fb1b49050b7f7839700b366f1215f9f4c96568cf74ab552f"
+    },
+    {
+      "path": "internal/config/config_test.go",
+      "sha256": "198fcf66c685f7cdd687fa46a0694369bad82359a529a8069b160a3694b46b40"
+    },
+    {
+      "path": "internal/config/database_test.go",
+      "sha256": "ea472a28f84faa5800734c7d3e6d4d640188d94f0c0c4469780adb49c6ca5f7d"
+    },
+    {
+      "path": "internal/config/runtime_test.go",
+      "sha256": "5e030931026ff47eb99511a344f21ba4d64ca18c657dd4aa8b27717ee7912d9d"
+    },
+    {
+      "path": "internal/dbmigrate/dbmigrate.go",
+      "sha256": "69c52525fb23522a3e0665abab152ab8913a36777d882c50a0d07dc162b6919f"
+    },
+    {
+      "path": "internal/domain/codex_review_test.go",
+      "sha256": "36f5da687532fcff52a3ca4621ccf03fa10e3440503c15ad557feb41c17e4728"
+    },
+    {
+      "path": "internal/domain/errors.go",
+      "sha256": "0b76a92936d1c1567ed10be6d862aff3b34a1a949481947d47bb1ece930c763c"
+    },
+    {
+      "path": "internal/domain/events.go",
+      "sha256": "e2265b634723009ec5b7618cadc075ef2cac8fcd74f8a3de48986e3f627f643a"
+    },
+    {
+      "path": "internal/domain/events_test.go",
+      "sha256": "9c62cfbad8446e2718a51c30e51b2017e1a1d4d393de03deb9799502888afa6d"
+    },
+    {
+      "path": "internal/domain/final_review_test.go",
+      "sha256": "9e167fc6d9c8da4efc78125b6972438d6a1d313d6275213e1d16a29dd455657d"
+    },
+    {
+      "path": "internal/domain/helpers_test.go",
+      "sha256": "812ccdbf40a5b6a6024cdd4e32a57fdeb7bcf74241192dc75429eaa1acd0c5f8"
+    },
+    {
+      "path": "internal/domain/id.go",
+      "sha256": "8a8a6560f97240471eac255d66bd1db2ed0ab18850a91be0ece47b016689071f"
+    },
+    {
+      "path": "internal/domain/id_test.go",
+      "sha256": "51053b45712876ac14edc337fad189a6c305892c6d4987d557bab21bfa0ea4c0"
+    },
+    {
+      "path": "internal/domain/ledger.go",
+      "sha256": "7c7217772531878fa2dba690ce83b59153b9e7337232f0460e097c538b72b513"
+    },
+    {
+      "path": "internal/domain/ledger_test.go",
+      "sha256": "d0072301d8d02b3a092c47b03e7eefb96e651b0d48a0dc2e3b271b6cd2ec45fe"
+    },
+    {
+      "path": "internal/domain/money/money.go",
+      "sha256": "56eec95c7a258f5c89edf1af1b7ceb494ee0d957a10dd16c1474befb34f7bca6"
+    },
+    {
+      "path": "internal/domain/money/money_test.go",
+      "sha256": "db32c25bfbe8abd465cc18188774141d75d74a77c12ea6ca54e3a32dc10fdaa4"
+    },
+    {
+      "path": "internal/domain/opening.go",
+      "sha256": "36ad288178c1782050ee5ae416424a0040b1fd3a7f2e17f3860b13c8a5890d66"
+    },
+    {
+      "path": "internal/domain/opening_test.go",
+      "sha256": "8a8c9b2e3f6ad441bcfd9500baff15ae11ac9504067b926cd5deb2d4813861dc"
+    },
+    {
+      "path": "internal/domain/processing.go",
+      "sha256": "2d84793cd6c5fadd213dbedf4c1c97ae6cc82f5b058e438159035c539e06225a"
+    },
+    {
+      "path": "internal/domain/processing_test.go",
+      "sha256": "e22bf6373f1f430443ddfec561eaf1c09df053f8561cb34aa3dff50d8ab17a16"
+    },
+    {
+      "path": "internal/domain/request.go",
+      "sha256": "534a2a1c309d4f828ffa13792385126c5a5fe6c86fb4ba1980024f12f1ac01bd"
+    },
+    {
+      "path": "internal/domain/request_test.go",
+      "sha256": "e02b8badddf83913435ca915caec80daecb133568aaa507517a607b81a99282f"
+    },
+    {
+      "path": "internal/domain/transaction.go",
+      "sha256": "514cb58d18faa73fb17b449d3a950bac7fef5efe46c3b57700d3ec4ab239a5cd"
+    },
+    {
+      "path": "internal/domain/transaction_test.go",
+      "sha256": "6af55c6f95f8185896e99651841d5d6c949369914692df8aad7adb47f6f66fba"
+    },
+    {
+      "path": "internal/domain/wallet.go",
+      "sha256": "cd155db34dc7513487ffe2f89c1ea01e4d1cd1cfa1b7cb65251509198f95108f"
+    },
+    {
+      "path": "internal/domain/wallet_test.go",
+      "sha256": "6cd91c6e2f0ccb223cfab7ad797cd6728b534e26ace87213525beee882734e25"
+    },
+    {
+      "path": "internal/README.md",
+      "sha256": "e30e3d6c0d0f2877d2cb32f7467ff44897b2b5839f237a34a5ad90e14aaf7854"
+    },
+    {
+      "path": "migrations/000001_initial_schema.down.sql",
+      "sha256": "3d5fceb4bed38b7183ea6d517a78a05a7c1c4a25c984ef0eb1db59fd74a183ff"
+    },
+    {
+      "path": "migrations/000001_initial_schema.up.sql",
+      "sha256": "1edf83a2175973d3ec009f224bb57885b57ea3503537ac9e8feca1adbe1f9127"
+    },
+    {
+      "path": "migrations/000002_review_integrity.down.sql",
+      "sha256": "ddcc7519d1af501cf7137c7324ae92022c7f356d454dc48c798ee638bfdff60c"
+    },
+    {
+      "path": "migrations/000002_review_integrity.up.sql",
+      "sha256": "b6956ae4f92540bb201a449d5c1cb1c0ef0e1f6601c4beaa262ab863c4268ba2"
+    },
+    {
+      "path": "migrations/000003_reference_failures.down.sql",
+      "sha256": "07785edcf3aa1e198aea6d643b5d10b90b81a0e4f1371ca4bca54a6291c6c546"
+    },
+    {
+      "path": "migrations/000003_reference_failures.up.sql",
+      "sha256": "45f4d8b198f101c36b9df2742eb98516fe3bc94122967a55d39fd61605d26527"
+    },
+    {
+      "path": "migrations/embed.go",
+      "sha256": "dff48d54b5807dd59496261b12faeb76a08dbf6adb5ed4c895168b926ef75423"
+    },
+    {
+      "path": "migrations/README.md",
+      "sha256": "a35a93a7df70a1874cfc551108886c1c2d3605d2e01bce2c16144d88518ccad6"
+    },
+    {
+      "path": "README.md",
+      "sha256": "5f55af64142a57e50c97232da6f99ef15ec89ccea75ec9aa05af92f9b04a53d6"
+    },
+    {
+      "path": "scripts/check.sh",
+      "sha256": "24cb29ffc90dfee0db554849df9506922eb4d022a0a98ea6d5701a6136e3c617"
+    },
+    {
+      "path": "scripts/demo.ps1",
+      "sha256": "5b5f829ea76db4aee091ce75cf9b4ea22856d8d20f3aed1d68ec21b81ea27f13"
+    },
+    {
+      "path": "scripts/README.md",
+      "sha256": "dce8ff075249aef4c146e10ff44f7b2458c31b9b502c104a2a0282872f510872"
+    },
+    {
+      "path": "scripts/test-compose-config.ps1",
+      "sha256": "7e8646e639cde87dd87646d1ec7ee72e84c2e22e54eb2b902c7531ccd3559c0f"
+    },
+    {
+      "path": "scripts/test-distributed.ps1",
+      "sha256": "c17a5dac1ffd403906735a91078034db9622702d7abb8063dd706ca611b12b6f"
+    },
+    {
+      "path": "scripts/validate-clean.ps1",
+      "sha256": "5ddbf3700de5227bb47b9a438ddad1fc567f80310e1e1d6da85d58ce9c873f5e"
+    },
+    {
+      "path": "tests/integration/api_test.go",
+      "sha256": "7a096c8b2455030cbd8123df96355bc46836c8a1c691752713a0d086dbeb6c10"
+    },
+    {
+      "path": "tests/integration/application_limits_test.go",
+      "sha256": "e56ccb5a172d894ea5f53b38dbb898f1c8e6f48fddc8a9255a8874f917458b09"
+    },
+    {
+      "path": "tests/integration/application_test.go",
+      "sha256": "9ed9282a16cd8706a511fbfba0a56efb38d961dafccac262ec5514e52226e80d"
+    },
+    {
+      "path": "tests/integration/architecture_review_test.go",
+      "sha256": "3647b922d8bc926e1d75e27b7aca0ef852f99255c690228e4d37da10a79eb7f8"
+    },
+    {
+      "path": "tests/integration/broker_security_test.go",
+      "sha256": "9d6261607da205c92d52b2ea4de317ab4cdc9d44a9e95904237f785e817d37ac"
+    },
+    {
+      "path": "tests/integration/codex_review_test.go",
+      "sha256": "d075b7f8493a32addb6cc7dc0fe572144e7e456e8eb92e4bf5f1a4de9c76418b"
+    },
+    {
+      "path": "tests/integration/consumer_queue_test.go",
+      "sha256": "fc5fe49bf1633b22cd6f2a60f4a6c6c8eeb2a877a80ac6cbd6cd18d88ab8b846"
+    },
+    {
+      "path": "tests/integration/consumer_recovery_test.go",
+      "sha256": "4703050f70ba2e8988d1c7cfaa697b55eddbce252a730d436f0d12c26b091502"
+    },
+    {
+      "path": "tests/integration/consumer_test.go",
+      "sha256": "601614e1d6c2698e147c07885587948a0455536946e4a71599918bc28faf9a34"
+    },
+    {
+      "path": "tests/integration/database_clock_test.go",
+      "sha256": "ecb3e745ebaeb7ff3cb816dfd5dd8e604d6ca4ac06feab1063b24fcba5d4fefd"
+    },
+    {
+      "path": "tests/integration/distributed_outages_test.go",
+      "sha256": "6d0339339b1bdedb8d5b469fb08a3489ee922985575e2935bc74c1d0b7b86200"
+    },
+    {
+      "path": "tests/integration/distributed_process_test.go",
+      "sha256": "81f480470a28d03dbc764b037af0c8303f73cd2edb8d29d118628412cf36829f"
+    },
+    {
+      "path": "tests/integration/distributed_recovery_test.go",
+      "sha256": "301b2293259b2c1178e2f41340a754a78b3d8e84fb019771117ff349b36c6d79"
+    },
+    {
+      "path": "tests/integration/distributed_test.go",
+      "sha256": "1dca45fadd73297be3d4c093bb7f4cd6ae817b47e91972a8eca82931854658f6"
+    },
+    {
+      "path": "tests/integration/env_test.go",
+      "sha256": "ad95472feb5448328258b8ebd322c1998d12a1d81d79dec1344b8b5b4bdfb9ab"
+    },
+    {
+      "path": "tests/integration/final_review_test.go",
+      "sha256": "a6f16a4092dcbc5a5f9c3498c6de58851d51b7057c2d920df550dcc02b1f1db5"
+    },
+    {
+      "path": "tests/integration/keycloak_test.go",
+      "sha256": "6f6487869e804ffafc0773f72ddf197039acfbd392c518f28e91d8bccf83ad20"
+    },
+    {
+      "path": "tests/integration/migrations_test.go",
+      "sha256": "3b81aeb99a2d9762d1d17f43047e79692eb8d559497a60f1a18c0f3bfdc1c1cb"
+    },
+    {
+      "path": "tests/integration/outbox_test.go",
+      "sha256": "60a3e73701024cbf0956aaed74d49ecf96edece3497740804c15203f82518a07"
+    },
+    {
+      "path": "tests/integration/postgres_test.go",
+      "sha256": "5c63162f616e9c1faca50cb59168e0850c16276f6b979a5930892a0f106bea1e"
+    },
+    {
+      "path": "tests/integration/reconciliation_test.go",
+      "sha256": "33c221a629225c81b3007d22a4108b0c7f3eed76cab0c87645a96e0c415d7499"
+    },
+    {
+      "path": "tests/integration/references_test.go",
+      "sha256": "2312bde8944de5a87c09f30225cf6ee4c34c36e1556842e33cbcd7fa092b1ef5"
+    },
+    {
+      "path": "tests/integration/schema_concurrency_test.go",
+      "sha256": "c478c8db40cc466cce688d254cc341722d16d485080fa1f9389114afd1042185"
+    },
+    {
+      "path": "tests/integration/schema_fixture_test.go",
+      "sha256": "250cba8f6265f01752427c591922d88eadd35f26df3a3b60dc2e113f4ffd692b"
+    },
+    {
+      "path": "tests/integration/schema_test.go",
+      "sha256": "812fcfe33c969706b74c856c644fff9364caa94ffc3ff6a1b037524cfa10049c"
+    },
+    {
+      "path": "tests/integration/sqs_test.go",
+      "sha256": "2b10e60e1ce2dcc7413e7aaab2967350405816aa6eedf1d57b70628fe75fe430"
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "bde078d03ea0ee3cbd57ebb86b700e2e6423da057062420350c0b112ea18062c"
+    },
+    {
+      "path": "tests/reviewer/blackbox.py",
+      "sha256": "b0b584449979d9fdca7a7712a865a44ebea38b6307deb2e850646cddae563f2e"
+    },
+    {
+      "path": "tests/reviewer/domain_probe_test.go",
+      "sha256": "78e8ffaaebada325b1a9fc0068684efebbbff695091da518a4b3c4579e250b79"
+    },
+    {
+      "path": "tests/reviewer/exercise_examples.py",
+      "sha256": "6175e19acfa97692a4a1a3f1f5513794bb6e8ab2e0ec970c6551fe47819eb4c5"
+    },
+    {
+      "path": "tests/reviewer/operations.py",
+      "sha256": "262676a0ca54d6c440f66d9e4d8dd464e4bd9a1cea27be982be2feec3363ed78"
+    },
+    {
+      "path": "tests/reviewer/README.md",
+      "sha256": "12b4ad694ee3fe807ed863d55b4d0437b8913526cb663127deb7e4813f192014"
+    },
+    {
+      "path": "tests/test.env",
+      "sha256": "fd1d81ea2b3c193ffeec8793f99511c95e71162f3ce9c43b4bf121a54339b663"
+    }
+  ]
+}

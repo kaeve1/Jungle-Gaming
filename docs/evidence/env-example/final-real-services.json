@@ -1,0 +1,28 @@
+{
+  "apis": [
+    "http://127.0.0.1:18081",
+    "http://127.0.0.1:49218",
+    "http://127.0.0.1:49219"
+  ],
+  "imageId": "sha256:3c9ce92a87aaef521cdfc717be24898ff93da736e2db894bdfcb90c74ce39669",
+  "containers": [
+    {
+      "name": "/jungle-gaming-validation-74887ba27953-api-1",
+      "pid": 46530,
+      "imageId": "sha256:3c9ce92a87aaef521cdfc717be24898ff93da736e2db894bdfcb90c74ce39669",
+      "user": "nonroot:nonroot"
+    },
+    {
+      "name": "/jungle-gaming-validation-74887ba27953-review-api-2",
+      "pid": 46715,
+      "imageId": "sha256:3c9ce92a87aaef521cdfc717be24898ff93da736e2db894bdfcb90c74ce39669",
+      "user": "nonroot:nonroot"
+    },
+    {
+      "name": "/jungle-gaming-validation-74887ba27953-review-api-3",
+      "pid": 46635,
+      "imageId": "sha256:3c9ce92a87aaef521cdfc717be24898ff93da736e2db894bdfcb90c74ce39669",
+      "user": "nonroot:nonroot"
+    }
+  ]
+}

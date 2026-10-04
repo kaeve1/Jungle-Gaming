@@ -1,0 +1,48 @@
+{
+  "project": "jungle-gaming-validation-74887ba27953",
+  "results": [
+    {
+      "step": "startup-build",
+      "exitCode": 0,
+      "seconds": 99.127
+    },
+    {
+      "exitCode": 0,
+      "step": "real-service-demo"
+    },
+    {
+      "step": "migration-version",
+      "exitCode": 0,
+      "seconds": 3.548
+    },
+    {
+      "step": "check",
+      "exitCode": 0,
+      "seconds": 68.394
+    },
+    {
+      "step": "stop-api",
+      "exitCode": 0,
+      "seconds": 1.152
+    },
+    {
+      "exitCode": 0,
+      "step": "production-sigterm-nonroot"
+    },
+    {
+      "exitCode": 0,
+      "step": "integration-distributed-race"
+    },
+    {
+      "step": "cleanup",
+      "exitCode": 0,
+      "seconds": 6.342
+    }
+  ],
+  "ports": {
+    "api": 18081,
+    "idp": 18080,
+    "postgres": 15432
+  },
+  "source": "isolated copy of delivered sources"
+}

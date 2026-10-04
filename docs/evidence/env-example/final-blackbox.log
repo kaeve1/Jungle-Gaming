@@ -1,0 +1,7 @@
+{"case": "authorization and provider isolation", "status": "PASS", "seconds": 1.314}
+{"case": "adversarial inputs", "status": "PASS", "seconds": 0.1}
+{"case": "main path and complete reversals", "status": "PASS", "seconds": 0.305}
+{"case": "zero, overflow and insufficient reversal", "status": "PASS", "seconds": 0.231}
+{"case": "50 duplicates and competing bets across three real services", "status": "PASS", "seconds": 0.317}
+{"case": "reference arrives after refund", "status": "PASS", "seconds": 1.721}
+{"case": "80 operations against independent integer model", "status": "PASS", "seconds": 2.324}

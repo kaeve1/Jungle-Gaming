@@ -1,0 +1,56 @@
+{
+  "results": [
+    {
+      "case": "authorization and provider isolation",
+      "status": "PASS",
+      "seconds": 0.131
+    },
+    {
+      "case": "adversarial inputs",
+      "status": "PASS",
+      "seconds": 0.165
+    },
+    {
+      "case": "main path and complete reversals",
+      "status": "PASS",
+      "seconds": 0.265
+    },
+    {
+      "case": "zero, overflow and insufficient reversal",
+      "status": "PASS",
+      "seconds": 0.215
+    },
+    {
+      "case": "50 duplicates and competing bets across three real services",
+      "status": "PASS",
+      "seconds": 0.331
+    },
+    {
+      "case": "reference arrives after refund",
+      "status": "PASS",
+      "seconds": 1.345
+    },
+    {
+      "case": "80 operations against independent integer model",
+      "status": "PASS",
+      "seconds": 1.866
+    }
+  ],
+  "wallet_ids": [
+    "01a10794-7519-7ed7-b5c4-806330a6fa15",
+    "01a10794-7595-79d5-869e-ae55e4d4a016",
+    "01a10794-763b-74b4-b7af-4b729b5470d0",
+    "01a10794-7758-7d3b-a4da-db2b5fe72154",
+    "01a10794-7799-7308-a1b8-5576de297977",
+    "01a10794-77d6-739d-a683-69c4b50ce5fa",
+    "01a10794-781b-7fa3-bc5d-e559cb915a56",
+    "01a10794-7907-7388-919b-5c3357322c8c",
+    "01a10794-7966-7f9a-bdfb-0e083aebeecb",
+    "01a10794-7ea7-7d01-b71f-c0f3af43eed9"
+  ],
+  "apis": [
+    "http://127.0.0.1:63495",
+    "http://127.0.0.1:49905",
+    "http://127.0.0.1:49906"
+  ]
+}

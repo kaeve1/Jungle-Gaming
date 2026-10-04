@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-04",
+  "validationProject": "jungle-gaming-validation-56b94707926a",
+  "results": [
+    {
+      "seconds": 63.681,
+      "exitCode": 0,
+      "step": "startup-build"
+    },
+    {
+      "step": "real-service-demo",
+      "exitCode": 0
+    },
+    {
+      "seconds": 2.452,
+      "exitCode": 0,
+      "step": "migration-version"
+    },
+    {
+      "seconds": 59.344,
+      "exitCode": 0,
+      "step": "check"
+    },
+    {
+      "step": "compose-settings",
+      "exitCode": 0
+    },
+    {
+      "seconds": 1.863,
+      "exitCode": 0,
+      "step": "stop-api"
+    },
+    {
+      "step": "production-sigterm-nonroot",
+      "exitCode": 0
+    },
+    {
+      "step": "integration-distributed-race",
+      "exitCode": 0
+    },
+    {
+      "seconds": 6.989,
+      "exitCode": 0,
+      "step": "cleanup"
+    }
+  ],
+  "integrationMainTestsPassed": 80,
+  "integrationSeconds": 261.365,
+  "httpGroupsPassed": 7,
+  "operationalGroupsPassed": 5,
+  "pythonBrokerTestsPassed": 5,
+  "protectedFilesMatchedValidatedCopy": 136,
+  "skippedParentOnlyHelpers": [
+    "TestStage8CrashConsumerHelper",
+    "TestStage11ProcessHelper"
+  ],
+  "runtimeChangesAfterValidation": [],
+  "environmentIncident": "Docker initially stopped; validation script preflight/error preservation fixed and checked."
+}

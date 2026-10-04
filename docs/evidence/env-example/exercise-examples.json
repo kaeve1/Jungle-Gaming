@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "walletId": "01a10815-1470-71e5-ac86-5194fbe059d9",
+  "openingAmount": "1000.00",
+  "betAmount": "25.00",
+  "originalBalance": "975.00",
+  "reconciliationEntriesBeforeWin": 2,
+  "ledgerPagination": "PASS",
+  "currentBalanceAfterWin": "980.00",
+  "replayBalance": "975.00"
+}

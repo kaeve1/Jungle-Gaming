@@ -1,0 +1,4 @@
+ok  	jungle-gaming-backend/tests/reviewer	1.015s
+time="2026-10-04T12:43:27-03:00" level=warning msg="Found orphan containers (jungle-gaming-validation-56b94707926a-review-api-3, jungle-gaming-validation-56b94707926a-review-api-2) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+ Container jungle-gaming-validation-56b94707926a-go-run-4f5b10b88805 Creating 
+ Container jungle-gaming-validation-56b94707926a-go-run-4f5b10b88805 Created 

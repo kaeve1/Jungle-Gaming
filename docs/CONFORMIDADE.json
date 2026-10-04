@@ -1,0 +1,3544 @@
+{
+  "metadata": {
+    "date": "2026-10-04",
+    "originalSha256": "89d5d4656be3112f7f8fcba127a9ba6fe6fe2aeda557753f96276c7a77a9eba9",
+    "criteria": 215,
+    "status": "Conferido com execução atual; nenhuma lacuna obrigatória conhecida no escopo documentado",
+    "evidence": "evidence/results.json",
+    "referencedTestsChecked": 102
+  },
+  "sourceLegend": {
+    "M": [
+      "internal/domain/money/money.go"
+    ],
+    "W": [
+      "internal/domain/wallet.go"
+    ],
+    "T": [
+      "internal/domain/transaction.go"
+    ],
+    "P": [
+      "internal/domain/processing.go",
+      "internal/domain/request.go"
+    ],
+    "L": [
+      "internal/domain/ledger.go"
+    ],
+    "E": [
+      "internal/domain/events.go"
+    ],
+    "G": [
+      "internal/domain/opening.go"
+    ],
+    "S": [
+      "internal/application/service.go",
+      "internal/application/inbox.go"
+    ],
+    "D": [
+      "migrations/000001_initial_schema.up.sql",
+      "migrations/000002_review_integrity.up.sql",
+      "migrations/000003_reference_failures.up.sql"
+    ],
+    "U": [
+      "internal/adapters/postgres/uow.go",
+      "internal/adapters/postgres/repositories.go"
+    ],
+    "R": [
+      "internal/application/references.go",
+      "internal/adapters/postgres/references.go",
+      "internal/adapters/referenceworker/worker.go"
+    ],
+    "O": [
+      "internal/application/outbox.go",
+      "internal/adapters/postgres/outbox.go",
+      "internal/adapters/outboxpublisher/worker.go"
+    ],
+    "Q": [
+      "internal/adapters/sqsconsumer/message.go",
+      "internal/adapters/sqsconsumer/worker.go",
+      "internal/adapters/postgres/inbox.go"
+    ],
+    "A": [
+      "internal/adapters/auth/verifier.go",
+      "deploy/keycloak/realm-jungle-gaming.json"
+    ],
+    "H": [
+      "internal/adapters/http/handler.go",
+      "internal/adapters/http/server.go",
+      "internal/adapters/postgres/reader.go"
+    ],
+    "F": [
+      "internal/bootstrap/bootstrap.go",
+      "internal/bootstrap/runtime.go",
+      "internal/config/config.go"
+    ],
+    "X": [
+      "internal/adapters/postgres/reconciliation.go"
+    ],
+    "V": [
+      "internal/adapters/observability/diagnostics.go",
+      "internal/adapters/health/health.go"
+    ],
+    "B": [
+      "deploy/sqs/init.sh",
+      "deploy/sqs/strict/strict_auth.py",
+      "deploy/sqs/strict/durable_state.py",
+      "deploy/sqs/strict/README.md"
+    ],
+    "C": [
+      "compose.yaml",
+      "Dockerfile",
+      "go.mod",
+      "go.sum",
+      ".env.example"
+    ],
+    "DOC": [
+      "README.md",
+      "ARCHITECTURE.md",
+      "docs/CONTRATOS.md",
+      "docs/TESTES.md",
+      "scripts/validate-clean.ps1"
+    ]
+  },
+  "testGroups": {
+    "money": [
+      {
+        "name": "TestParseValid",
+        "file": "internal/domain/money/money_test.go"
+      },
+      {
+        "name": "TestParseInvalid",
+        "file": "internal/domain/money/money_test.go"
+      },
+      {
+        "name": "TestArithmetic",
+        "file": "internal/domain/money/money_test.go"
+      },
+      {
+        "name": "TestOverflow",
+        "file": "internal/domain/money/money_test.go"
+      },
+      {
+        "name": "TestCurrencyMismatch",
+        "file": "internal/domain/money/money_test.go"
+      },
+      {
+        "name": "TestJSON",
+        "file": "internal/domain/money/money_test.go"
+      },
+      {
+        "name": "TestUnmarshalRejects",
+        "file": "internal/domain/money/money_test.go"
+      }
+    ],
+    "wallet": [
+      {
+        "name": "TestWalletDebitCredit",
+        "file": "internal/domain/wallet_test.go"
+      },
+      {
+        "name": "TestWalletRejectsInvalidMovementsWithoutChangingState",
+        "file": "internal/domain/wallet_test.go"
+      },
+      {
+        "name": "TestRehydrateWallet",
+        "file": "internal/domain/wallet_test.go"
+      }
+    ],
+    "domain": [
+      {
+        "name": "TestCodexReviewPublicInvariants",
+        "file": "internal/domain/codex_review_test.go"
+      },
+      {
+        "name": "TestLayerBoundaries",
+        "file": "internal/archtest/layers_test.go"
+      },
+      {
+        "name": "TestFxOnlyInBootstrap",
+        "file": "internal/archtest/layers_test.go"
+      },
+      {
+        "name": "TestStateMachine",
+        "file": "internal/domain/transaction_test.go"
+      },
+      {
+        "name": "TestTransitionGuards",
+        "file": "internal/domain/transaction_test.go"
+      },
+      {
+        "name": "TestRehydrateTransactionRoundTrip",
+        "file": "internal/domain/transaction_test.go"
+      },
+      {
+        "name": "TestLedgerEntryEquation",
+        "file": "internal/domain/ledger_test.go"
+      },
+      {
+        "name": "TestLedgerEntryIsReadOnly",
+        "file": "internal/domain/ledger_test.go"
+      }
+    ],
+    "rules": [
+      {
+        "name": "TestProcessExternalKinds",
+        "file": "internal/domain/processing_test.go"
+      },
+      {
+        "name": "TestReversals",
+        "file": "internal/domain/processing_test.go"
+      },
+      {
+        "name": "TestReferenceValidation",
+        "file": "internal/domain/processing_test.go"
+      },
+      {
+        "name": "TestRequestZeroPolicyPerKind",
+        "file": "internal/domain/request_test.go"
+      },
+      {
+        "name": "TestFingerprint",
+        "file": "internal/domain/request_test.go"
+      },
+      {
+        "name": "TestClassifyDuplicate",
+        "file": "internal/domain/request_test.go"
+      }
+    ],
+    "opening": [
+      {
+        "name": "TestOpenWalletWithPositiveBalance",
+        "file": "internal/domain/opening_test.go"
+      },
+      {
+        "name": "TestOpenWalletWithZeroBalance",
+        "file": "internal/domain/opening_test.go"
+      },
+      {
+        "name": "TestOpenWalletValidation",
+        "file": "internal/domain/opening_test.go"
+      },
+      {
+        "name": "TestStage5OpeningAndBusinessResults",
+        "file": "tests/integration/application_test.go"
+      }
+    ],
+    "schema": [
+      {
+        "name": "TestWalletProtections",
+        "file": "tests/integration/schema_test.go"
+      },
+      {
+        "name": "TestLedgerProtections",
+        "file": "tests/integration/schema_test.go"
+      },
+      {
+        "name": "TestTransactionProtections",
+        "file": "tests/integration/schema_test.go"
+      },
+      {
+        "name": "TestInboxAndOutboxProtections",
+        "file": "tests/integration/schema_test.go"
+      },
+      {
+        "name": "TestCodexReviewSchemaRejectsInvalidHistory",
+        "file": "tests/integration/codex_review_test.go"
+      }
+    ],
+    "concurrency": [
+      {
+        "name": "TestDatabasePreventsLostUpdateWithoutAppLock",
+        "file": "tests/integration/schema_concurrency_test.go"
+      },
+      {
+        "name": "TestDatabaseRejectsBlindBalanceOverwrite",
+        "file": "tests/integration/schema_concurrency_test.go"
+      },
+      {
+        "name": "TestDatabasePreventsConcurrentDoubleReversal",
+        "file": "tests/integration/schema_concurrency_test.go"
+      },
+      {
+        "name": "TestStage5IndependentWalletsAndCancellation",
+        "file": "tests/integration/application_test.go"
+      },
+      {
+        "name": "TestStage12ThreeProcessesContestReplays",
+        "file": "tests/integration/final_review_test.go"
+      }
+    ],
+    "atomic": [
+      {
+        "name": "TestStage5RollbackAtEveryWrite",
+        "file": "tests/integration/application_test.go"
+      },
+      {
+        "name": "TestStage5CommitConstraintFailureRollsBack",
+        "file": "tests/integration/application_limits_test.go"
+      },
+      {
+        "name": "TestStage8InboxRollbackAtEveryWrite",
+        "file": "tests/integration/consumer_test.go"
+      }
+    ],
+    "auth": [
+      {
+        "name": "TestTokensForEachIdentity",
+        "file": "tests/integration/keycloak_test.go"
+      },
+      {
+        "name": "TestInvalidClientCredentialsAreRejected",
+        "file": "tests/integration/keycloak_test.go"
+      },
+      {
+        "name": "TestStage6AuthenticatedHTTPAndProviderIsolation",
+        "file": "tests/integration/api_test.go"
+      },
+      {
+        "name": "TestStage6ExpiredAndForgedKeycloakTokens",
+        "file": "tests/integration/api_test.go"
+      },
+      {
+        "name": "TestStage10RealAuthorizationMetricsAndDivergence",
+        "file": "tests/integration/reconciliation_test.go"
+      }
+    ],
+    "broker": [
+      {
+        "name": "TestQueuesAreProvisioned",
+        "file": "tests/integration/sqs_test.go"
+      },
+      {
+        "name": "TestLeastPrivilegePolicies",
+        "file": "tests/integration/sqs_test.go"
+      },
+      {
+        "name": "TestBrokerRejectsAuthenticationBypass",
+        "file": "tests/integration/sqs_test.go"
+      },
+      {
+        "name": "TestBrokerSignatureAndAdminBoundary",
+        "file": "tests/integration/broker_security_test.go"
+      }
+    ],
+    "http": [
+      {
+        "name": "TestStage6StrictJSONAndLedgerPagination",
+        "file": "tests/integration/api_test.go"
+      },
+      {
+        "name": "TestStage6AmbiguousHeadersRejected",
+        "file": "tests/integration/api_test.go"
+      },
+      {
+        "name": "TestStage5MoneyLimitsAndPrivateRejections",
+        "file": "tests/integration/application_limits_test.go"
+      },
+      {
+        "name": "TestStage6TransientHTTPFailureAndLifecycle",
+        "file": "tests/integration/api_test.go"
+      }
+    ],
+    "reference": [
+      {
+        "name": "TestStage7DurableResolutionAndCombinedReversals",
+        "file": "tests/integration/references_test.go"
+      },
+      {
+        "name": "TestStage7ExpiryTerminalInvalidAndInsufficient",
+        "file": "tests/integration/references_test.go"
+      },
+      {
+        "name": "TestStage7DirectRollbackDirections",
+        "file": "tests/integration/references_test.go"
+      },
+      {
+        "name": "TestStage7PendingChain",
+        "file": "tests/integration/references_test.go"
+      },
+      {
+        "name": "TestStage12ReferenceMetadataBoundaries",
+        "file": "tests/integration/final_review_test.go"
+      }
+    ],
+    "refRecovery": [
+      {
+        "name": "TestStage7WorkersCompeteAndSkipLockedWallet",
+        "file": "tests/integration/references_test.go"
+      },
+      {
+        "name": "TestStage7RecoveryRollbackAtEveryWrite",
+        "file": "tests/integration/references_test.go"
+      },
+      {
+        "name": "TestStage7AbandonedDatabaseSession",
+        "file": "tests/integration/references_test.go"
+      },
+      {
+        "name": "TestStage7PermanentFailureIsDurableAndTerminal",
+        "file": "tests/integration/references_test.go"
+      },
+      {
+        "name": "TestStage7TransientFailureNeverFinalizes",
+        "file": "tests/integration/references_test.go"
+      },
+      {
+        "name": "TestStage11ReferencesExpireAndInvalidAcrossProcesses",
+        "file": "tests/integration/distributed_recovery_test.go"
+      }
+    ],
+    "consumer": [
+      {
+        "name": "TestStage8InboxFinancialAtomicityAndRaces",
+        "file": "tests/integration/consumer_test.go"
+      },
+      {
+        "name": "TestStage8RealConsumerHTTPAndPendingReference",
+        "file": "tests/integration/consumer_test.go"
+      },
+      {
+        "name": "TestStage8MalformedMessagesReachRealDLQ",
+        "file": "tests/integration/consumer_recovery_test.go"
+      },
+      {
+        "name": "TestStage8BusinessRejectionAcknowledgedAndInboxConflictRedriven",
+        "file": "tests/integration/consumer_recovery_test.go"
+      },
+      {
+        "name": "TestStage8ExhaustedTransientRetryReachesDLQ",
+        "file": "tests/integration/consumer_recovery_test.go"
+      },
+      {
+        "name": "TestStage8GroupsParallelAndRetryKeepsFIFOOrder",
+        "file": "tests/integration/consumer_recovery_test.go"
+      }
+    ],
+    "outbox": [
+      {
+        "name": "TestStage9ClaimsLeaseAndStaleConfirmation",
+        "file": "tests/integration/outbox_test.go"
+      },
+      {
+        "name": "TestStage9RealPublishersRetryRecoveryAndSnapshots",
+        "file": "tests/integration/outbox_test.go"
+      },
+      {
+        "name": "TestStage9UncommittedInvisibleAndNetworkOutsideWalletLock",
+        "file": "tests/integration/outbox_test.go"
+      },
+      {
+        "name": "TestStage9WalletEventsMayArriveOutOfCommitOrder",
+        "file": "tests/integration/outbox_test.go"
+      }
+    ],
+    "events": [
+      {
+        "name": "TestEnvelopeJSON",
+        "file": "internal/domain/events_test.go"
+      },
+      {
+        "name": "TestEventsCarryFixedTypeVersionAndExactMoney",
+        "file": "internal/domain/events_test.go"
+      },
+      {
+        "name": "TestCodexReviewEnvelopeIsSnapshot",
+        "file": "internal/domain/codex_review_test.go"
+      }
+    ],
+    "fx": [
+      {
+        "name": "TestGraphIsValid",
+        "file": "internal/bootstrap/bootstrap_test.go"
+      },
+      {
+        "name": "TestInvalidConfigPreventsStart",
+        "file": "internal/bootstrap/bootstrap_test.go"
+      },
+      {
+        "name": "TestStopWaitsForActualTermination",
+        "file": "internal/adapters/referenceworker/worker_test.go"
+      },
+      {
+        "name": "TestStopCancelsIOAndIdleWait",
+        "file": "internal/adapters/referenceworker/worker_test.go"
+      },
+      {
+        "name": "TestShutdownDrainsOrCancelsAndNeverAcknowledgesEarly",
+        "file": "internal/adapters/sqsconsumer/worker_test.go"
+      },
+      {
+        "name": "TestShutdownDrainAndDeadline",
+        "file": "internal/adapters/outboxpublisher/worker_test.go"
+      },
+      {
+        "name": "TestStage10FxAllRolesPublishesAndShutsDown",
+        "file": "tests/integration/reconciliation_test.go"
+      }
+    ],
+    "reconcile": [
+      {
+        "name": "TestStage10ReconciliationExactSnapshotAndLargeTurnover",
+        "file": "tests/integration/reconciliation_test.go"
+      },
+      {
+        "name": "TestStage10ReconciliationFinalOverflowIsExplicit",
+        "file": "tests/integration/reconciliation_test.go"
+      },
+      {
+        "name": "TestStage10RealAuthorizationMetricsAndDivergence",
+        "file": "tests/integration/reconciliation_test.go"
+      }
+    ],
+    "observability": [
+      {
+        "name": "TestLogsAreSanitizedAndMetricLabelsBounded",
+        "file": "internal/adapters/observability/diagnostics_test.go"
+      },
+      {
+        "name": "TestStage12ReferenceLogKeepsInputMessageIdentity",
+        "file": "tests/integration/final_review_test.go"
+      },
+      {
+        "name": "TestStage12FailedMetricRequiresConfirmedAudit",
+        "file": "tests/integration/final_review_test.go"
+      },
+      {
+        "name": "TestEventFieldsDistinguishesInputMessageFromPendingEvent",
+        "file": "internal/adapters/outboxpublisher/worker_test.go"
+      }
+    ],
+    "distributed": [
+      {
+        "name": "TestStage11ThreeProcessesConcurrencyRestartAndTransports",
+        "file": "tests/integration/distributed_test.go"
+      },
+      {
+        "name": "TestStage11HTTPKillBeforeAndAfterCommit",
+        "file": "tests/integration/distributed_test.go"
+      },
+      {
+        "name": "TestStage11FxConsumerKilledAfterCommitBeforeDelete",
+        "file": "tests/integration/distributed_recovery_test.go"
+      },
+      {
+        "name": "TestStage11FxPublishersKilledBeforeSendAndBeforeConfirmation",
+        "file": "tests/integration/distributed_recovery_test.go"
+      },
+      {
+        "name": "TestStage11RealContainerOutagesAndRecovery",
+        "file": "tests/integration/distributed_outages_test.go"
+      }
+    ],
+    "migrations": [
+      {
+        "name": "TestMigrationsRoundTrip",
+        "file": "tests/integration/migrations_test.go"
+      },
+      {
+        "name": "TestIntegrityMigrationPreservesExistingHistory",
+        "file": "tests/integration/migrations_test.go"
+      },
+      {
+        "name": "TestMigrationErrorsDoNotLeakPassword",
+        "file": "tests/integration/migrations_test.go"
+      },
+      {
+        "name": "TestAppRoleIsLimited",
+        "file": "tests/integration/postgres_test.go"
+      },
+      {
+        "name": "TestArchitectureReviewRejectsEffectiveAdministrativeUser",
+        "file": "tests/integration/architecture_review_test.go"
+      }
+    ],
+    "execution": [],
+    "static": [],
+    "external": []
+  },
+  "checks": [
+    {
+      "id": "1-3-01",
+      "section": "1. Objetivo",
+      "clause": "Serviço em Go composto com Uber Fx",
+      "sources": [
+        "C",
+        "F"
+      ],
+      "evidence": [
+        "fx"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "1-3-02",
+      "section": "1. Objetivo",
+      "clause": "API HTTP e consumidor com efeitos financeiros equivalentes; mesmo caso de uso",
+      "sources": [
+        "H",
+        "Q",
+        "S"
+      ],
+      "evidence": [
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "1-3-03",
+      "section": "1. Objetivo",
+      "clause": "Resultado correto entre instâncias independentes e falhas",
+      "sources": [
+        "U",
+        "D",
+        "O",
+        "R"
+      ],
+      "evidence": [
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "1-3-04",
+      "section": "1. Objetivo",
+      "clause": "Precisão, ledger, idempotência, concorrência e recuperação avaliáveis por evidências",
+      "sources": [
+        "M",
+        "L",
+        "D",
+        "S"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "2-11-01",
+      "section": "2. Autenticação e autorização",
+      "clause": "IdP externo OAuth/OIDC efetivo; Keycloak no Compose",
+      "sources": [
+        "A",
+        "C"
+      ],
+      "evidence": [
+        "auth"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "2-11-02",
+      "section": "2. Autenticação e autorização",
+      "clause": "client_credentials; escolha, validação e permissões justificadas; sem cadastro/emissão própria",
+      "sources": [
+        "A",
+        "DOC"
+      ],
+      "evidence": [
+        "auth"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "2-11-03",
+      "section": "2. Autenticação e autorização",
+      "clause": "Token determina providerId; body/path divergentes recusados",
+      "sources": [
+        "A",
+        "H"
+      ],
+      "evidence": [
+        "auth"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "2-11-04",
+      "section": "2. Autenticação e autorização",
+      "clause": "Provedor consulta apenas suas transações, também por ID externo e em replay",
+      "sources": [
+        "H",
+        "S"
+      ],
+      "evidence": [
+        "auth"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "2-11-05",
+      "section": "2. Autenticação e autorização",
+      "clause": "Operações de carteira e métricas restritas à identidade interna",
+      "sources": [
+        "H",
+        "A"
+      ],
+      "evidence": [
+        "auth"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "2-11-06",
+      "section": "2. Autenticação e autorização",
+      "clause": "Mensageria controlada por SigV4 e políticas do broker; consumidor valida domínio",
+      "sources": [
+        "B",
+        "Q",
+        "P"
+      ],
+      "evidence": [
+        "broker"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "3-21-01",
+      "section": "3. Ambiente e falhas",
+      "clause": "Operação externa exige jogador, carteira, jogo, provedor e rodada; cinco tipos externos",
+      "sources": [
+        "P",
+        "T"
+      ],
+      "evidence": [
+        "rules"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "3-21-02",
+      "section": "3. Ambiente e falhas",
+      "clause": "Entrega at-least-once e repetição HTTP/SQS sem duplicação financeira",
+      "sources": [
+        "S",
+        "Q",
+        "D"
+      ],
+      "evidence": [
+        "consumer",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "3-21-03",
+      "section": "3. Ambiente e falhas",
+      "clause": "Reversão anterior à referência persiste e retoma",
+      "sources": [
+        "R",
+        "P"
+      ],
+      "evidence": [
+        "reference",
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "3-21-04",
+      "section": "3. Ambiente e falhas",
+      "clause": "Operações simultâneas da mesma carteira conservam saldo",
+      "sources": [
+        "U",
+        "D"
+      ],
+      "evidence": [
+        "concurrency",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "3-21-05",
+      "section": "3. Ambiente e falhas",
+      "clause": "Morte antes/depois do commit não aplica efeito parcial ou duplicado",
+      "sources": [
+        "S",
+        "U",
+        "Q"
+      ],
+      "evidence": [
+        "atomic",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "3-21-06",
+      "section": "3. Ambiente e falhas",
+      "clause": "Republicação preserva eventId e snapshot",
+      "sources": [
+        "O",
+        "E"
+      ],
+      "evidence": [
+        "outbox",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "3-21-07",
+      "section": "3. Ambiente e falhas",
+      "clause": "Indisponibilidade temporária de PostgreSQL e SQS permite recuperação",
+      "sources": [
+        "U",
+        "Q",
+        "O"
+      ],
+      "evidence": [
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "3-21-08",
+      "section": "3. Ambiente e falhas",
+      "clause": "Saldo não negativo e evento confirmado preservado nos cenários especificados, incluindo crash do broker adaptado",
+      "sources": [
+        "D",
+        "B",
+        "O"
+      ],
+      "evidence": [
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-01",
+      "section": "4. Stack e lifecycle",
+      "clause": "Go 1.27.1 coincide em go.mod, Dockerfile e toolchain",
+      "sources": [
+        "C"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-02",
+      "section": "4. Stack e lifecycle",
+      "clause": "Go Modules com go.mod/go.sum presentes e verificados; imagens por digest",
+      "sources": [
+        "C"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-03",
+      "section": "4. Stack e lifecycle",
+      "clause": "Uber Fx efetivo na aplicação, não apenas importado",
+      "sources": [
+        "F"
+      ],
+      "evidence": [
+        "fx"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-04",
+      "section": "4. Stack e lifecycle",
+      "clause": "HTTP net/http; IdP externo; PostgreSQL; SQS local MiniStack; Docker Compose",
+      "sources": [
+        "C",
+        "H",
+        "A",
+        "B"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-05",
+      "section": "4. Stack e lifecycle",
+      "clause": "Migrations numeradas up/down com comandos documentados",
+      "sources": [
+        "D",
+        "DOC"
+      ],
+      "evidence": [
+        "migrations"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-06",
+      "section": "4. Stack e lifecycle",
+      "clause": "testing/go test e execução com -race",
+      "sources": [
+        "DOC",
+        "C"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-07",
+      "section": "4. Stack e lifecycle",
+      "clause": "pgx/v5 com SQL, locks, constraints e fronteira transacional explícitos; sqlc opcional ausente",
+      "sources": [
+        "U",
+        "D",
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-08",
+      "section": "4. Stack e lifecycle",
+      "clause": "Money mapeado BIGINT mais moeda e uma pgx.Tx compartilhada entre repositórios",
+      "sources": [
+        "U",
+        "D",
+        "M"
+      ],
+      "evidence": [
+        "atomic"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-09",
+      "section": "4. Stack e lifecycle",
+      "clause": "Configuração, conexões, repositórios, casos de uso, handlers e workers injetados por construtores",
+      "sources": [
+        "F"
+      ],
+      "evidence": [
+        "fx"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-10",
+      "section": "4. Stack e lifecycle",
+      "clause": "fx.Module/Provide/Invoke/Lifecycle; configuração validada antes do grafo e fx.Supply justificado",
+      "sources": [
+        "F",
+        "DOC"
+      ],
+      "evidence": [
+        "fx"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-11",
+      "section": "4. Stack e lifecycle",
+      "clause": "Startup valida configuração e dependências antes de aceitar trabalho",
+      "sources": [
+        "F",
+        "A",
+        "V"
+      ],
+      "evidence": [
+        "fx",
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-12",
+      "section": "4. Stack e lifecycle",
+      "clause": "Workers têm contexto próprio, deadlines e canal observável de término",
+      "sources": [
+        "F",
+        "Q",
+        "O",
+        "R"
+      ],
+      "evidence": [
+        "fx"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-13",
+      "section": "4. Stack e lifecycle",
+      "clause": "Shutdown para novas entradas, drena ou cancela/libera trabalho e só depois fecha dependências",
+      "sources": [
+        "F",
+        "H",
+        "Q",
+        "O"
+      ],
+      "evidence": [
+        "fx",
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "4-36-14",
+      "section": "4. Stack e lifecycle",
+      "clause": "Domínio independente de Fx, HTTP, SQS e persistência",
+      "sources": [
+        "M",
+        "W",
+        "T",
+        "P",
+        "L",
+        "E"
+      ],
+      "evidence": [
+        "domain"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "5-72-01",
+      "section": "5. Oito garantias obrigatórias",
+      "clause": "1: Nenhum float em parsing, cálculo, JSON, hash ou persistência monetária",
+      "sources": [
+        "M",
+        "P",
+        "D"
+      ],
+      "evidence": [
+        "money",
+        "static"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "5-72-02",
+      "section": "5. Oito garantias obrigatórias",
+      "clause": "2: Idempotência persistente sobrevive ao reinício dos processos",
+      "sources": [
+        "D",
+        "S"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "5-72-03",
+      "section": "5. Oito garantias obrigatórias",
+      "clause": "3: Invariantes no banco independem de mutex e dedup FIFO",
+      "sources": [
+        "D",
+        "U"
+      ],
+      "evidence": [
+        "schema",
+        "concurrency"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "5-72-04",
+      "section": "5. Oito garantias obrigatórias",
+      "clause": "4: Eventos publicados somente após commit financeiro",
+      "sources": [
+        "O",
+        "S"
+      ],
+      "evidence": [
+        "outbox",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "5-72-05",
+      "section": "5. Oito garantias obrigatórias",
+      "clause": "5: Ledger append-only; reversão é lançamento novo",
+      "sources": [
+        "L",
+        "D",
+        "P"
+      ],
+      "evidence": [
+        "schema",
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "5-72-06",
+      "section": "5. Oito garantias obrigatórias",
+      "clause": "6: Coordenação por carteira, sem lock global; carteiras independentes avançam",
+      "sources": [
+        "U",
+        "R"
+      ],
+      "evidence": [
+        "concurrency"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "5-72-07",
+      "section": "5. Oito garantias obrigatórias",
+      "clause": "7: Versionamento e SQL impedem lost updates",
+      "sources": [
+        "W",
+        "D",
+        "U"
+      ],
+      "evidence": [
+        "concurrency"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "5-72-08",
+      "section": "5. Oito garantias obrigatórias",
+      "clause": "8: Unicidade, não negatividade e imutabilidade impostas pelo schema",
+      "sources": [
+        "D"
+      ],
+      "evidence": [
+        "schema",
+        "concurrency"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-83-01",
+      "section": "6. Encapsulamento e erros",
+      "clause": "Entidades encapsuladas; construtores e transições públicas preservam invariantes",
+      "sources": [
+        "W",
+        "T",
+        "L",
+        "P"
+      ],
+      "evidence": [
+        "domain",
+        "wallet"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-83-02",
+      "section": "6. Encapsulamento e erros",
+      "clause": "Criação e reidratação separadas, sem reaplicar dinheiro nem emitir eventos na leitura",
+      "sources": [
+        "W",
+        "T",
+        "L"
+      ],
+      "evidence": [
+        "domain",
+        "wallet"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-83-03",
+      "section": "6. Encapsulamento e erros",
+      "clause": "Valores não inicializados ou inválidos rejeitados",
+      "sources": [
+        "M",
+        "W",
+        "T",
+        "P"
+      ],
+      "evidence": [
+        "money",
+        "domain"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-83-04",
+      "section": "6. Encapsulamento e erros",
+      "clause": "Erros classificáveis por errors.Is/As; rejeição de negócio sem panic",
+      "sources": [
+        "P",
+        "T",
+        "U"
+      ],
+      "evidence": [
+        "rules",
+        "static"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-83-05",
+      "section": "6. Encapsulamento e erros",
+      "clause": "I/O com context.Context, cancelamento e limites de tempo",
+      "sources": [
+        "U",
+        "H",
+        "Q",
+        "O",
+        "R",
+        "A"
+      ],
+      "evidence": [
+        "fx",
+        "concurrency"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-01",
+      "section": "6.1. Money",
+      "clause": "Value object com estado privado, valor e moeda; operações retornam novos valores",
+      "sources": [
+        "M"
+      ],
+      "evidence": [
+        "money"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-02",
+      "section": "6.1. Money",
+      "clause": "Criação decimal, zero por moeda, soma, subtração, negação, comparação e JSON",
+      "sources": [
+        "M"
+      ],
+      "evidence": [
+        "money"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-03",
+      "section": "6.1. Money",
+      "clause": "int64 em centavos; limites de representação documentados",
+      "sources": [
+        "M",
+        "DOC"
+      ],
+      "evidence": [
+        "money"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-04",
+      "section": "6.1. Money",
+      "clause": "amount sempre string decimal e currency ISO; escala fixa duas casas",
+      "sources": [
+        "M",
+        "H",
+        "Q"
+      ],
+      "evidence": [
+        "money",
+        "http"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-05",
+      "section": "6.1. Money",
+      "clause": "Vazio, NaN, Infinity, científico, escala extra e entrada financeira negativa recusados",
+      "sources": [
+        "M",
+        "P"
+      ],
+      "evidence": [
+        "money",
+        "http",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-06",
+      "section": "6.1. Money",
+      "clause": "Sem arredondamento; formato monetário único e normalização documentada antes do hash",
+      "sources": [
+        "M",
+        "P",
+        "DOC"
+      ],
+      "evidence": [
+        "rules"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-07",
+      "section": "6.1. Money",
+      "clause": "Soma, subtração e comparação recusam moedas diferentes",
+      "sources": [
+        "M"
+      ],
+      "evidence": [
+        "money"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-08",
+      "section": "6.1. Money",
+      "clause": "Overflow tratado no parsing, soma, subtração e negação, inclusive MinInt64",
+      "sources": [
+        "M"
+      ],
+      "evidence": [
+        "money"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-09",
+      "section": "6.1. Money",
+      "clause": "Diferenças internas podem ser negativas; carteira nunca negativa",
+      "sources": [
+        "M",
+        "W",
+        "X"
+      ],
+      "evidence": [
+        "money",
+        "reconcile"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-10",
+      "section": "6.1. Money",
+      "clause": "Persistência preserva centavos BIGINT e moeda; reconciliação usa soma NUMERIC exata",
+      "sources": [
+        "D",
+        "U",
+        "X"
+      ],
+      "evidence": [
+        "reconcile"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-11",
+      "section": "6.1. Money",
+      "clause": "BRL nos fluxos principais; incompatibilidade de moedas testada",
+      "sources": [
+        "M",
+        "P"
+      ],
+      "evidence": [
+        "money",
+        "rules"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-95-12",
+      "section": "6.1. Money",
+      "clause": "Método UnmarshalJSON direto exige EOF; JSON estrito nos transportes",
+      "sources": [
+        "M",
+        "H",
+        "Q"
+      ],
+      "evidence": [
+        "money",
+        "http"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-112-01",
+      "section": "6.2. Wallet",
+      "clause": "Raiz do agregado contém identidade, jogador, moeda, saldo, versão e timestamps",
+      "sources": [
+        "W",
+        "D"
+      ],
+      "evidence": [
+        "wallet",
+        "schema"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-112-02",
+      "section": "6.2. Wallet",
+      "clause": "Criação/reidratação/débito/crédito explícitos; transação SQL controla persistência",
+      "sources": [
+        "W",
+        "S",
+        "U"
+      ],
+      "evidence": [
+        "wallet",
+        "atomic"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-112-03",
+      "section": "6.2. Wallet",
+      "clause": "Uma carteira por playerId/currency",
+      "sources": [
+        "D",
+        "S"
+      ],
+      "evidence": [
+        "schema",
+        "opening"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-112-04",
+      "section": "6.2. Wallet",
+      "clause": "Débito preserva zero ou positivo; moeda da movimentação coincide",
+      "sources": [
+        "W",
+        "P",
+        "D"
+      ],
+      "evidence": [
+        "wallet",
+        "rules"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-112-05",
+      "section": "6.2. Wallet",
+      "clause": "Toda alteração de saldo exige ledger no mesmo commit",
+      "sources": [
+        "D",
+        "S",
+        "U"
+      ],
+      "evidence": [
+        "atomic",
+        "schema"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-112-06",
+      "section": "6.2. Wallet",
+      "clause": "Versão inicial 1; aumento exatamente 1 apenas em mudança financeira",
+      "sources": [
+        "W",
+        "D",
+        "G"
+      ],
+      "evidence": [
+        "wallet",
+        "opening",
+        "schema"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-112-07",
+      "section": "6.2. Wallet",
+      "clause": "Concorrência preserva atualização confirmada; estratégia documentada",
+      "sources": [
+        "U",
+        "D",
+        "DOC"
+      ],
+      "evidence": [
+        "concurrency",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-01",
+      "section": "6.3. WagerTransaction",
+      "clause": "OPENING mais os cinco tipos externos; origem interna/externa diferenciada",
+      "sources": [
+        "T",
+        "P",
+        "D"
+      ],
+      "evidence": [
+        "rules",
+        "opening"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-02",
+      "section": "6.3. WagerTransaction",
+      "clause": "Identificadores, provedor, chave, hash, carteira, jogador, rodada, jogo, tipo, Money e referência externa persistidos",
+      "sources": [
+        "T",
+        "D",
+        "U"
+      ],
+      "evidence": [
+        "schema",
+        "rules"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-03",
+      "section": "6.3. WagerTransaction",
+      "clause": "Referência interna resolvida, failureCode e resultado financeiro persistidos quando aplicáveis",
+      "sources": [
+        "T",
+        "D",
+        "R"
+      ],
+      "evidence": [
+        "reference",
+        "http"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-04",
+      "section": "6.3. WagerTransaction",
+      "clause": "Criação começa PENDING; transições validadas pelo domínio",
+      "sources": [
+        "T"
+      ],
+      "evidence": [
+        "domain"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-05",
+      "section": "6.3. WagerTransaction",
+      "clause": "Cinco estados implementados, incluindo PENDING_REFERENCE e FAILED terminal",
+      "sources": [
+        "T",
+        "R"
+      ],
+      "evidence": [
+        "domain",
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-06",
+      "section": "6.3. WagerTransaction",
+      "clause": "Terminais imutáveis; replay recupera resultado original",
+      "sources": [
+        "T",
+        "D",
+        "S"
+      ],
+      "evidence": [
+        "schema",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-07",
+      "section": "6.3. WagerTransaction",
+      "clause": "Transitório versus permanente e máquina de estados documentados",
+      "sources": [
+        "U",
+        "R",
+        "DOC"
+      ],
+      "evidence": [
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-08",
+      "section": "6.3. WagerTransaction",
+      "clause": "PENDING sem dependência concluído sincronicamente, sem commit intermediário de aceite",
+      "sources": [
+        "S",
+        "U",
+        "DOC"
+      ],
+      "evidence": [
+        "atomic",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-09",
+      "section": "6.3. WagerTransaction",
+      "clause": "Retomada do PENDING assíncrono: condicional não aplicável; pendência real é PENDING_REFERENCE durável",
+      "sources": [
+        "S",
+        "R",
+        "DOC"
+      ],
+      "evidence": [
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-10",
+      "section": "6.3. WagerTransaction",
+      "clause": "OPENING recusado por HTTP e SQS",
+      "sources": [
+        "P",
+        "H",
+        "Q"
+      ],
+      "evidence": [
+        "rules",
+        "http",
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-11",
+      "section": "6.3. WagerTransaction",
+      "clause": "OPENING tem identidade estável, carteira, jogador, moeda, valor, estado e timestamps",
+      "sources": [
+        "G",
+        "T",
+        "D"
+      ],
+      "evidence": [
+        "opening",
+        "schema"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-127-12",
+      "section": "6.3. WagerTransaction",
+      "clause": "Metadados externos inaplicáveis ausentes no OPENING; schema impede crédito inicial duplicado",
+      "sources": [
+        "D",
+        "G"
+      ],
+      "evidence": [
+        "schema",
+        "opening"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-151-01",
+      "section": "6.4. WalletLedgerEntry",
+      "clause": "Todos os campos exigidos, direção e instantes; walletVersion adicional",
+      "sources": [
+        "L",
+        "D"
+      ],
+      "evidence": [
+        "schema"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-151-02",
+      "section": "6.4. WalletLedgerEntry",
+      "clause": "Construtor valida equação balanceAfter=balanceBefore±money, sem overflow",
+      "sources": [
+        "L",
+        "M"
+      ],
+      "evidence": [
+        "domain",
+        "money"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-151-03",
+      "section": "6.4. WalletLedgerEntry",
+      "clause": "Estado imutável; unicidade walletId/transactionId e walletId/version",
+      "sources": [
+        "D",
+        "L"
+      ],
+      "evidence": [
+        "schema"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-151-04",
+      "section": "6.4. WalletLedgerEntry",
+      "clause": "Banco bloqueia edição, exclusão e truncate pelo papel da aplicação",
+      "sources": [
+        "D"
+      ],
+      "evidence": [
+        "schema"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-151-05",
+      "section": "6.4. WalletLedgerEntry",
+      "clause": "LOSS e rejeições não produzem ledger; correções são novos lançamentos",
+      "sources": [
+        "P",
+        "D"
+      ],
+      "evidence": [
+        "rules",
+        "schema"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-151-06",
+      "section": "6.4. WalletLedgerEntry",
+      "clause": "Partidas dobradas opcionais ausentes",
+      "sources": [
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Opcional ausente"
+    },
+    {
+      "id": "6-159-01",
+      "section": "6.5. Inbox e outbox",
+      "clause": "Inbox contém consumidor, messageId, hash, recebimento, conclusão e unicidade composta",
+      "sources": [
+        "D",
+        "Q"
+      ],
+      "evidence": [
+        "schema",
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-159-02",
+      "section": "6.5. Inbox e outbox",
+      "clause": "Outbox contém eventId estável, agregado, tipo, payload, ocorrência, tentativas, próximo envio e publicação",
+      "sources": [
+        "D",
+        "O"
+      ],
+      "evidence": [
+        "schema",
+        "outbox"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-159-03",
+      "section": "6.5. Inbox e outbox",
+      "clause": "Retry com backoff e dados duráveis de reserva/publicação",
+      "sources": [
+        "O",
+        "D"
+      ],
+      "evidence": [
+        "outbox"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-159-04",
+      "section": "6.5. Inbox e outbox",
+      "clause": "Inbox, conclusão e efeitos de domínio/ledger/eventos no mesmo commit",
+      "sources": [
+        "S",
+        "Q",
+        "U"
+      ],
+      "evidence": [
+        "consumer",
+        "atomic"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "6-159-05",
+      "section": "6.5. Inbox e outbox",
+      "clause": "PENDING_REFERENCE confirmado permite ACK; worker durável continua tratamento",
+      "sources": [
+        "S",
+        "Q",
+        "R"
+      ],
+      "evidence": [
+        "consumer",
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-01",
+      "section": "7. Operações e referências",
+      "clause": "BET debita valor positivo com saldo suficiente",
+      "sources": [
+        "P",
+        "W"
+      ],
+      "evidence": [
+        "rules",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-02",
+      "section": "7. Operações e referências",
+      "clause": "WIN credita positivo e permite BET da mesma rodada como referência opcional",
+      "sources": [
+        "P"
+      ],
+      "evidence": [
+        "rules",
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-03",
+      "section": "7. Operações e referências",
+      "clause": "LOSS exige 0.00, moeda correta, sem ledger nem incremento da versão",
+      "sources": [
+        "P",
+        "W"
+      ],
+      "evidence": [
+        "rules",
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-04",
+      "section": "7. Operações e referências",
+      "clause": "REFUND devolve integralmente BET processada",
+      "sources": [
+        "P"
+      ],
+      "evidence": [
+        "rules",
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-05",
+      "section": "7. Operações e referências",
+      "clause": "ROLLBACK faz movimento inverso de BET, WIN ou REFUND processada",
+      "sources": [
+        "P"
+      ],
+      "evidence": [
+        "rules",
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-06",
+      "section": "7. Operações e referências",
+      "clause": "REFUND/ROLLBACK exigem referência e lookup providerId/externalTransactionId",
+      "sources": [
+        "P",
+        "R",
+        "U"
+      ],
+      "evidence": [
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-07",
+      "section": "7. Operações e referências",
+      "clause": "Referência concorda em provedor, jogador, carteira, moeda e rodada",
+      "sources": [
+        "P",
+        "D"
+      ],
+      "evidence": [
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-08",
+      "section": "7. Operações e referências",
+      "clause": "Reversão parcial proibida; valor idêntico ao referenciado",
+      "sources": [
+        "P",
+        "D"
+      ],
+      "evidence": [
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-09",
+      "section": "7. Operações e referências",
+      "clause": "Reversão duplicada do mesmo tipo impedida também no banco",
+      "sources": [
+        "D",
+        "P"
+      ],
+      "evidence": [
+        "concurrency",
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-10",
+      "section": "7. Operações e referências",
+      "clause": "REFUND e ROLLBACK diretos combinados sobre BET não devolvem débito duas vezes; política documentada",
+      "sources": [
+        "P",
+        "D",
+        "DOC"
+      ],
+      "evidence": [
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-11",
+      "section": "7. Operações e referências",
+      "clause": "Rollback de crédito sem saldo rejeitado e auditado com código distinto de BET insuficiente",
+      "sources": [
+        "P",
+        "T"
+      ],
+      "evidence": [
+        "reference",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-12",
+      "section": "7. Operações e referências",
+      "clause": "Referência ausente persiste PENDING_REFERENCE",
+      "sources": [
+        "P",
+        "R",
+        "D"
+      ],
+      "evidence": [
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-13",
+      "section": "7. Operações e referências",
+      "clause": "Worker retomável após reinício, com backoff exponencial e prazo persistido",
+      "sources": [
+        "R",
+        "D"
+      ],
+      "evidence": [
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-14",
+      "section": "7. Operações e referências",
+      "clause": "TTL padrão 10min; atrasos 1/2/4 até 60s configuráveis; expiração vira REJECTED/REFERENCE_NOT_FOUND com evento",
+      "sources": [
+        "R",
+        "P",
+        "DOC"
+      ],
+      "evidence": [
+        "reference",
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-15",
+      "section": "7. Operações e referências",
+      "clause": "Referência existente pendente aguarda; REJECTED/FAILED produz REFERENCE_NOT_PROCESSED",
+      "sources": [
+        "P",
+        "R"
+      ],
+      "evidence": [
+        "reference",
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-16",
+      "section": "7. Operações e referências",
+      "clause": "Última consulta de expiração requer banco respondendo; transitório não finaliza operação",
+      "sources": [
+        "R",
+        "U"
+      ],
+      "evidence": [
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "7-168-17",
+      "section": "7. Operações e referências",
+      "clause": "failureCode estável e distinção de entrada corrigível, conflito e resultado definitivo documentados",
+      "sources": [
+        "P",
+        "T",
+        "DOC"
+      ],
+      "evidence": [
+        "rules",
+        "http"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "8-196-01",
+      "section": "8. Concorrência",
+      "clause": "Lock pessimista por carteira mais verificação de versão e retries SQL limitados, justificados",
+      "sources": [
+        "U",
+        "D",
+        "DOC"
+      ],
+      "evidence": [
+        "concurrency"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "8-196-02",
+      "section": "8. Concorrência",
+      "clause": "Pelo menos três processos com memória e conexões independentes",
+      "sources": [
+        "F",
+        "U"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "8-196-03",
+      "section": "8. Concorrência",
+      "clause": "100.00 com duas BET 80.00: uma processada, outra INSUFFICIENT_FUNDS, saldo 20.00 e único débito",
+      "sources": [
+        "S",
+        "U",
+        "D"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "8-196-04",
+      "section": "8. Concorrência",
+      "clause": "Reenvios não alteram resultado original nem saldo",
+      "sources": [
+        "S",
+        "D"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "8-196-05",
+      "section": "8. Concorrência",
+      "clause": "Carteiras diferentes continuam simultaneamente, inclusive quando uma está bloqueada",
+      "sources": [
+        "U",
+        "R"
+      ],
+      "evidence": [
+        "concurrency"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-01",
+      "section": "9. Contratos HTTP",
+      "clause": "POST /wallets aceita playerId e initialBalance no formato do exemplo",
+      "sources": [
+        "H",
+        "G",
+        "S"
+      ],
+      "evidence": [
+        "opening",
+        "http",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-02",
+      "section": "9. Contratos HTTP",
+      "clause": "Abertura positiva: carteira versão1, OPENING PROCESSED, crédito e dois eventos no mesmo commit",
+      "sources": [
+        "G",
+        "S",
+        "D",
+        "E"
+      ],
+      "evidence": [
+        "opening",
+        "atomic"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-03",
+      "section": "9. Contratos HTTP",
+      "clause": "Abertura zero: só carteira versão1, sem OPENING/ledger/eventos financeiros",
+      "sources": [
+        "G",
+        "S"
+      ],
+      "evidence": [
+        "opening"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-04",
+      "section": "9. Contratos HTTP",
+      "clause": "Reabertura mesmo jogador/moeda retorna conflito",
+      "sources": [
+        "S",
+        "H",
+        "D"
+      ],
+      "evidence": [
+        "opening",
+        "http"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-05",
+      "section": "9. Contratos HTTP",
+      "clause": "GET carteira e GET ledger existentes e internos",
+      "sources": [
+        "H"
+      ],
+      "evidence": [
+        "auth",
+        "http"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-06",
+      "section": "9. Contratos HTTP",
+      "clause": "Ledger com cursor opaco, ordem estável, limit e validação de cursor por carteira",
+      "sources": [
+        "H"
+      ],
+      "evidence": [
+        "http"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-07",
+      "section": "9. Contratos HTTP",
+      "clause": "GET transação por ID interno e por provider/ID externo, com estado pendente e códigos",
+      "sources": [
+        "H"
+      ],
+      "evidence": [
+        "auth",
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-08",
+      "section": "9. Contratos HTTP",
+      "clause": "POST wagering implementa campos, Money e resposta exemplificados",
+      "sources": [
+        "H",
+        "S",
+        "P"
+      ],
+      "evidence": [
+        "http",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-09",
+      "section": "9. Contratos HTTP",
+      "clause": "referenceExternalTransactionId obrigatório nas reversões",
+      "sources": [
+        "P",
+        "H"
+      ],
+      "evidence": [
+        "rules",
+        "http"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-10",
+      "section": "9. Contratos HTTP",
+      "clause": "Idempotency-Key obrigatório, recebido preservado; não substituído por chave calculada",
+      "sources": [
+        "H",
+        "P",
+        "S"
+      ],
+      "evidence": [
+        "http",
+        "rules"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-11",
+      "section": "9. Contratos HTTP",
+      "clause": "Hash financeiro SHA256 de JSON com chaves ordenadas, campos de negócio e normalizações documentados",
+      "sources": [
+        "P",
+        "DOC"
+      ],
+      "evidence": [
+        "rules"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-12",
+      "section": "9. Contratos HTTP",
+      "clause": "Hash financeiro exclui chave e metadados de transporte; equivalente HTTP/SQS",
+      "sources": [
+        "P",
+        "Q",
+        "S"
+      ],
+      "evidence": [
+        "consumer",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-13",
+      "section": "9. Contratos HTTP",
+      "clause": "Mesma chave/conteúdo retorna replay persistido com idempotentReplay=true",
+      "sources": [
+        "S",
+        "H"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-14",
+      "section": "9. Contratos HTTP",
+      "clause": "Mesma chave/outro conteúdo retorna conflito",
+      "sources": [
+        "P",
+        "S",
+        "H"
+      ],
+      "evidence": [
+        "rules",
+        "http"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-15",
+      "section": "9. Contratos HTTP",
+      "clause": "Mesmo provider/ID externo com outra chave não reaplica",
+      "sources": [
+        "D",
+        "S",
+        "H"
+      ],
+      "evidence": [
+        "concurrency",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-16",
+      "section": "9. Contratos HTTP",
+      "clause": "Replay concluído devolve saldo original após outras operações",
+      "sources": [
+        "T",
+        "S",
+        "H"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-17",
+      "section": "9. Contratos HTTP",
+      "clause": "Códigos e corpos distinguem entrada inválida, conflito, REJECTED, PENDING_REFERENCE e indisponibilidade",
+      "sources": [
+        "H",
+        "DOC"
+      ],
+      "evidence": [
+        "http",
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-18",
+      "section": "9. Contratos HTTP",
+      "clause": "POST reconciliation retorna todos os seis campos do exemplo; difference=stored-calculated",
+      "sources": [
+        "X",
+        "H"
+      ],
+      "evidence": [
+        "reconcile",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-19",
+      "section": "9. Contratos HTTP",
+      "clause": "Reconciliação inclui OPENING e usa visão consistente MVCC; não modifica saldo",
+      "sources": [
+        "X"
+      ],
+      "evidence": [
+        "reconcile"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-20",
+      "section": "9. Contratos HTTP",
+      "clause": "Divergência aparece na resposta, log e métrica",
+      "sources": [
+        "H",
+        "V"
+      ],
+      "evidence": [
+        "reconcile"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "9-206-21",
+      "section": "9. Contratos HTTP",
+      "clause": "Health live e ready públicos; ready consulta PostgreSQL e filas SQS efetivamente configuradas",
+      "sources": [
+        "V",
+        "H",
+        "F"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-01",
+      "section": "10. Consumidor SQS",
+      "clause": "Filas wager-transactions.fifo e wager-transactions-dlq.fifo provisionadas com redrive",
+      "sources": [
+        "B",
+        "C"
+      ],
+      "evidence": [
+        "broker"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-02",
+      "section": "10. Consumidor SQS",
+      "clause": "Envelope messageId/type/occurredAt/data e todos os campos do exemplo",
+      "sources": [
+        "Q"
+      ],
+      "evidence": [
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-03",
+      "section": "10. Consumidor SQS",
+      "clause": "Mesmo caso de uso HTTP/SQS; data.idempotencyKey financeira mais dedup inbox",
+      "sources": [
+        "S",
+        "Q"
+      ],
+      "evidence": [
+        "consumer",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-04",
+      "section": "10. Consumidor SQS",
+      "clause": "messageId do envelope, não do broker, identifica inbox; hash verificado na reentrega",
+      "sources": [
+        "Q",
+        "S",
+        "D"
+      ],
+      "evidence": [
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-05",
+      "section": "10. Consumidor SQS",
+      "clause": "DeleteMessage somente depois de commit durável",
+      "sources": [
+        "Q",
+        "S"
+      ],
+      "evidence": [
+        "consumer",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-06",
+      "section": "10. Consumidor SQS",
+      "clause": "Rejeição de negócio confirmada é terminal e permite ACK",
+      "sources": [
+        "Q",
+        "S"
+      ],
+      "evidence": [
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-07",
+      "section": "10. Consumidor SQS",
+      "clause": "Transitório usa retry/backoff; permanente ou tentativas esgotadas chegam à DLQ",
+      "sources": [
+        "Q",
+        "B"
+      ],
+      "evidence": [
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-08",
+      "section": "10. Consumidor SQS",
+      "clause": "Limites documentados: redrive10, visibility30s, processamento10s, ACK3s, polling20s, backoff2–60s",
+      "sources": [
+        "Q",
+        "DOC"
+      ],
+      "evidence": [
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-09",
+      "section": "10. Consumidor SQS",
+      "clause": "Mensagem inválida é recusada, sem efeito financeiro, e redriven",
+      "sources": [
+        "Q",
+        "P"
+      ],
+      "evidence": [
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-10",
+      "section": "10. Consumidor SQS",
+      "clause": "SIGTERM para polling, drena ou cancela/libera visibilidade; receipt desconhecido expira naturalmente",
+      "sources": [
+        "Q",
+        "F"
+      ],
+      "evidence": [
+        "fx"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-11",
+      "section": "10. Consumidor SQS",
+      "clause": "MessageGroupId=walletId canônico e MessageDeduplicationId=messageId documentados",
+      "sources": [
+        "Q",
+        "DOC"
+      ],
+      "evidence": [
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "10-323-12",
+      "section": "10. Consumidor SQS",
+      "clause": "Concorrência HTTP/SQS para mesma operação com recebimentos repetidos reais",
+      "sources": [
+        "S",
+        "Q",
+        "D"
+      ],
+      "evidence": [
+        "consumer",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-01",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "Estado, saldo, ledger, inbox e eventos atômicos conforme aplicável",
+      "sources": [
+        "S",
+        "U",
+        "D"
+      ],
+      "evidence": [
+        "atomic",
+        "consumer"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-02",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "Worker publisher separado do processamento financeiro",
+      "sources": [
+        "O",
+        "F"
+      ],
+      "evidence": [
+        "outbox"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-03",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "Múltiplos publishers disputam registros por claim/lease; backoff e retomada abandonada",
+      "sources": [
+        "O",
+        "D"
+      ],
+      "evidence": [
+        "outbox",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-04",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "Interrupção commit→publish recuperada por outra instância",
+      "sources": [
+        "O"
+      ],
+      "evidence": [
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-05",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "Interrupção publish→confirmação recuperada com mesmo eventId, aceitando duplicidade externa",
+      "sources": [
+        "O",
+        "E"
+      ],
+      "evidence": [
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-06",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "Destino wallet-events.fifo provisionado; roteamento e consumo documentados",
+      "sources": [
+        "B",
+        "DOC"
+      ],
+      "evidence": [
+        "broker",
+        "outbox"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-07",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "WagerTransactionProcessed concreto para sucesso, incluindo LOSS e OPENING positivo",
+      "sources": [
+        "E",
+        "P",
+        "G"
+      ],
+      "evidence": [
+        "events",
+        "opening"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-08",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "WagerTransactionRejected concreto para rejeição definitiva",
+      "sources": [
+        "E",
+        "P"
+      ],
+      "evidence": [
+        "events",
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-09",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "WalletBalanceChanged concreto apenas para mudança efetiva de saldo",
+      "sources": [
+        "E",
+        "P",
+        "G"
+      ],
+      "evidence": [
+        "events",
+        "rules"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-10",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "WagerTransactionPendingReference concreto na espera",
+      "sources": [
+        "E",
+        "P"
+      ],
+      "evidence": [
+        "events",
+        "reference"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-11",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "Envelope tem eventId/eventType/aggregateId/correlationId/causationId opcional/occurredAt/version/data tipado",
+      "sources": [
+        "E"
+      ],
+      "evidence": [
+        "events"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-12",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "WalletBalanceChanged tem walletId/transactionId/direction/money/balanceBefore/balanceAfter/walletVersion",
+      "sources": [
+        "E"
+      ],
+      "evidence": [
+        "events"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-13",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "Tipo/versão fixados no construtor; timestamps UTC RFC3339; Money string decimal",
+      "sources": [
+        "E",
+        "M"
+      ],
+      "evidence": [
+        "events",
+        "money"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-14",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "Payload imutável no domínio e banco; publisher não consulta saldo atual para recompor evento",
+      "sources": [
+        "E",
+        "D",
+        "O"
+      ],
+      "evidence": [
+        "events",
+        "schema",
+        "outbox"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "11-359-15",
+      "section": "11. Transactional outbox e eventos",
+      "clause": "Ordem entre publishers não promete ordem de commit; consumidores deduplicam eventId e usam walletVersion",
+      "sources": [
+        "O",
+        "DOC"
+      ],
+      "evidence": [
+        "outbox"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "12-384-01",
+      "section": "12. Observabilidade",
+      "clause": "Logs JSON rastreiam correlationId/messageId/transactionId/walletId/providerId quando disponíveis",
+      "sources": [
+        "V",
+        "F",
+        "S",
+        "O",
+        "R"
+      ],
+      "evidence": [
+        "observability",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "12-384-02",
+      "section": "12. Observabilidade",
+      "clause": "Logs não expõem tokens, segredos, payload financeiro completo ou mensagem SQL contendo saldo",
+      "sources": [
+        "V",
+        "U",
+        "H"
+      ],
+      "evidence": [
+        "observability"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "12-384-03",
+      "section": "12. Observabilidade",
+      "clause": "Métricas de resultados por status e source, inclusive FAILED só após commit de auditoria",
+      "sources": [
+        "V",
+        "R"
+      ],
+      "evidence": [
+        "observability"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "12-384-04",
+      "section": "12. Observabilidade",
+      "clause": "Métricas de duplicatas, retries e conflitos de concorrência",
+      "sources": [
+        "V"
+      ],
+      "evidence": [
+        "observability",
+        "reconcile"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "12-384-05",
+      "section": "12. Observabilidade",
+      "clause": "DLQ aproximada, backlog/atraso outbox, latência e divergências de reconciliação",
+      "sources": [
+        "V"
+      ],
+      "evidence": [
+        "reconcile"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "12-384-06",
+      "section": "12. Observabilidade",
+      "clause": "Health conforme API; métricas internas autenticadas e labels sem IDs",
+      "sources": [
+        "H",
+        "V"
+      ],
+      "evidence": [
+        "auth",
+        "reconcile"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "12-384-07",
+      "section": "12. Observabilidade",
+      "clause": "OpenTelemetry e dashboards são opcionais e não implementados",
+      "sources": [
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Opcional ausente"
+    },
+    {
+      "id": "13-392-01",
+      "section": "13. Verificação obrigatória",
+      "clause": "Unitários Money: parsing/arithmetic/escala/limites/inválidos/incompatibilidade",
+      "sources": [
+        "M"
+      ],
+      "evidence": [
+        "money"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-02",
+      "section": "13. Verificação obrigatória",
+      "clause": "Unitários carteira, transições e cinco tipos externos",
+      "sources": [
+        "W",
+        "T",
+        "P"
+      ],
+      "evidence": [
+        "wallet",
+        "domain",
+        "rules"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-03",
+      "section": "13. Verificação obrigatória",
+      "clause": "Unitários conflito de payload por chave e zero por tipo",
+      "sources": [
+        "P"
+      ],
+      "evidence": [
+        "rules"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-04",
+      "section": "13. Verificação obrigatória",
+      "clause": "Unitários OPENING interno, metadados e eventos",
+      "sources": [
+        "G",
+        "E"
+      ],
+      "evidence": [
+        "opening",
+        "events"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-05",
+      "section": "13. Verificação obrigatória",
+      "clause": "Integração usa PostgreSQL/Keycloak/MiniStack em containers reais; infraestrutura não substituída por mocks",
+      "sources": [
+        "C"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-06",
+      "section": "13. Verificação obrigatória",
+      "clause": "Integração migrations/constraints/imutabilidade/atomicidade",
+      "sources": [
+        "D",
+        "U"
+      ],
+      "evidence": [
+        "migrations",
+        "schema",
+        "atomic"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-07",
+      "section": "13. Verificação obrigatória",
+      "clause": "Integração inbox/redelivery/outbox concorrente/retry/DLQ/reinício",
+      "sources": [
+        "Q",
+        "O",
+        "R"
+      ],
+      "evidence": [
+        "consumer",
+        "outbox",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-08",
+      "section": "13. Verificação obrigatória",
+      "clause": "Composição Fx com startup, shutdown e liberação observável de recursos",
+      "sources": [
+        "F",
+        "H",
+        "Q",
+        "O",
+        "R"
+      ],
+      "evidence": [
+        "fx",
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-09",
+      "section": "13. Verificação obrigatória",
+      "clause": "IdP real rejeita ausência, invalidez e expiração de credenciais",
+      "sources": [
+        "A",
+        "H"
+      ],
+      "evidence": [
+        "auth",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-10",
+      "section": "13. Verificação obrigatória",
+      "clause": "Isolamento entre provedores inclusive consultas/replays e operações internas",
+      "sources": [
+        "A",
+        "H",
+        "S"
+      ],
+      "evidence": [
+        "auth",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-11",
+      "section": "13. Verificação obrigatória",
+      "clause": "Acesso não autorizado não muda finanças nem revela dados protegidos",
+      "sources": [
+        "H",
+        "S"
+      ],
+      "evidence": [
+        "auth",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-12",
+      "section": "13. Verificação obrigatória",
+      "clause": "Cenário1: 50 envios paralelos da mesma BET resultam em único débito",
+      "sources": [
+        "S",
+        "D"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-13",
+      "section": "13. Verificação obrigatória",
+      "clause": "Cenário2: duas BET 80.00 sobre 100.00 com resultado obrigatório",
+      "sources": [
+        "U",
+        "D"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-14",
+      "section": "13. Verificação obrigatória",
+      "clause": "Cenário3: carteiras diferentes processadas simultaneamente",
+      "sources": [
+        "U"
+      ],
+      "evidence": [
+        "concurrency",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-15",
+      "section": "13. Verificação obrigatória",
+      "clause": "Cenário4: cenários relevantes repetidos em três processos independentes",
+      "sources": [
+        "F",
+        "U"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-16",
+      "section": "13. Verificação obrigatória",
+      "clause": "Cenário5: consumidor morto pós-commit/pré-DeleteMessage; reentrega comprovada",
+      "sources": [
+        "Q",
+        "S"
+      ],
+      "evidence": [
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-17",
+      "section": "13. Verificação obrigatória",
+      "clause": "Cenário6: dois publishers na mesma outbox e recuperação da publicação",
+      "sources": [
+        "O"
+      ],
+      "evidence": [
+        "outbox",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-18",
+      "section": "13. Verificação obrigatória",
+      "clause": "Cenário7: reversão antes da referência, resolução posterior e expiração",
+      "sources": [
+        "R"
+      ],
+      "evidence": [
+        "reference",
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-19",
+      "section": "13. Verificação obrigatória",
+      "clause": "Cenário8: reinício preserva idempotência, pendências e consistência; PENDING assíncrono não usado",
+      "sources": [
+        "S",
+        "R",
+        "D"
+      ],
+      "evidence": [
+        "distributed",
+        "refRecovery"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-20",
+      "section": "13. Verificação obrigatória",
+      "clause": "Saldo final conferido com créditos menos débitos incluindo abertura",
+      "sources": [
+        "X",
+        "D"
+      ],
+      "evidence": [
+        "reconcile",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-21",
+      "section": "13. Verificação obrigatória",
+      "clause": "HTTP/SQS cruzados e dedup da aplicação, não só FIFO; recebimentos repetidos comprovados",
+      "sources": [
+        "S",
+        "Q"
+      ],
+      "evidence": [
+        "consumer",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "13-392-22",
+      "section": "13. Verificação obrigatória",
+      "clause": "go test -race nos unitários e integration,distributed; execução atual registrada no relatório final",
+      "sources": [
+        "C",
+        "DOC"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-01",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "Integridade financeira (20), concorrência (20), idempotência (15) têm evidências rastreáveis",
+      "sources": [
+        "M",
+        "D",
+        "U",
+        "S"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-02",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "Mensageria (15), arquitetura (10), testes (10), observabilidade (5), documentação (5) têm evidências",
+      "sources": [
+        "Q",
+        "O",
+        "F",
+        "V",
+        "DOC"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-03",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "Nota de 100 pontos pertence ao avaliador; não é resultado de teste automatizado",
+      "sources": [
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Avaliação externa"
+    },
+    {
+      "id": "14-427-04",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "E1: autenticação efetiva nos endpoints de negócio",
+      "sources": [
+        "A",
+        "H"
+      ],
+      "evidence": [
+        "auth"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-05",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "E2: sem acesso não autorizado a operações/transações nos testes",
+      "sources": [
+        "A",
+        "H",
+        "S"
+      ],
+      "evidence": [
+        "auth",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-06",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "E3: nenhuma aritmética monetária com float",
+      "sources": [
+        "M",
+        "P",
+        "D",
+        "X"
+      ],
+      "evidence": [
+        "money",
+        "static"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-07",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "E4: sem saldo negativo por concorrência nos cenários executados",
+      "sources": [
+        "D",
+        "U"
+      ],
+      "evidence": [
+        "concurrency",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-08",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "E5: sem movimentação duplicada nos cenários executados",
+      "sources": [
+        "D",
+        "S"
+      ],
+      "evidence": [
+        "consumer",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-09",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "E6: idempotência persistida, não limitada à memória",
+      "sources": [
+        "D",
+        "S"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-10",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "E7: correção financeira funciona com três instâncias independentes",
+      "sources": [
+        "U",
+        "D",
+        "F"
+      ],
+      "evidence": [
+        "distributed",
+        "external"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-11",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "E8: publicação somente pós-commit",
+      "sources": [
+        "O",
+        "S"
+      ],
+      "evidence": [
+        "outbox",
+        "distributed"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-12",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "E9: ledger auditável e protegido",
+      "sources": [
+        "D",
+        "L"
+      ],
+      "evidence": [
+        "schema",
+        "reconcile"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-13",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "E10: PostgreSQL/SQS/IdP reais nos testes",
+      "sources": [
+        "C"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "14-427-14",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "Partidas dobradas, tracing e carga opcionais ausentes; não há meta mínima de RPS",
+      "sources": [
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Opcional ausente"
+    },
+    {
+      "id": "14-427-15",
+      "section": "14. Avaliação e eliminatórios",
+      "clause": "Metodologia/throughput/p50/p95/p99/erros/conflitos/outbox em teste de carga: condicional sem aplicação, pois não se apresenta benchmark",
+      "sources": [
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Condicional não aplicável"
+    },
+    {
+      "id": "15-445-01",
+      "section": "15. Material e reprodução",
+      "clause": "Código, migrations e Docker Compose presentes; reprodução limpa com fontes e novos volumes",
+      "sources": [
+        "C",
+        "D",
+        "DOC"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-02",
+      "section": "15. Material e reprodução",
+      "clause": "README inclui pré-requisitos e variáveis de ambiente",
+      "sources": [
+        "DOC",
+        "C"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-03",
+      "section": "15. Material e reprodução",
+      "clause": "README inclui inicialização de filas, migrations up/down e execução da aplicação",
+      "sources": [
+        "DOC",
+        "B",
+        "D"
+      ],
+      "evidence": [
+        "migrations",
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-04",
+      "section": "15. Material e reprodução",
+      "clause": "README inclui chamadas autenticadas e comandos de teste",
+      "sources": [
+        "DOC",
+        "A"
+      ],
+      "evidence": [
+        "auth",
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-05",
+      "section": "15. Material e reprodução",
+      "clause": ".env.example contém valores locais identificados, sem segredos reais de produção",
+      "sources": [
+        "C",
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-06",
+      "section": "15. Material e reprodução",
+      "clause": "IdP provisionado automaticamente com identidades de teste e fluxo client_credentials documentado",
+      "sources": [
+        "A",
+        "C",
+        "DOC"
+      ],
+      "evidence": [
+        "auth",
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-07",
+      "section": "15. Material e reprodução",
+      "clause": "ARCHITECTURE explica Money/transações/idempotência/locks/referências/reversões/inbox/outbox",
+      "sources": [
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-08",
+      "section": "15. Material e reprodução",
+      "clause": "ARCHITECTURE explica autenticação/autorização/Fx/shutdown/limitações/interpretações e opcionais ausentes",
+      "sources": [
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-09",
+      "section": "15. Material e reprodução",
+      "clause": "docker compose up --build ou equivalente documentado e ensaiado",
+      "sources": [
+        "C",
+        "DOC"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-10",
+      "section": "15. Material e reprodução",
+      "clause": "go test ./..., go test -race ./... e go vet ./... ou equivalentes Docker documentados e executados",
+      "sources": [
+        "DOC",
+        "C"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-11",
+      "section": "15. Material e reprodução",
+      "clause": "Dependências de testes, integração, múltiplas instâncias e simulações de falha documentadas separadamente",
+      "sources": [
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-12",
+      "section": "15. Material e reprodução",
+      "clause": "Build tags integration e integration,distributed com comandos explícitos",
+      "sources": [
+        "DOC",
+        "C"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-13",
+      "section": "15. Material e reprodução",
+      "clause": "gofmt, módulos verificados/tidy e builds por imagens fixadas; dependências reproduzíveis",
+      "sources": [
+        "C",
+        "DOC"
+      ],
+      "evidence": [
+        "execution"
+      ],
+      "status": "Atendido no escopo verificado"
+    },
+    {
+      "id": "15-445-14",
+      "section": "15. Material e reprodução",
+      "clause": "Material local de entrega preparado; publicação e envio serão feitos pelo candidato",
+      "sources": [
+        "DOC"
+      ],
+      "evidence": [
+        "static"
+      ],
+      "status": "Preparação autorizada; sem publicação ou envio automático"
+    }
+  ]
+}

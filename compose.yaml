@@ -1,0 +1,260 @@
+# Ambiente local: PostgreSQL, Keycloak e SQS (MiniStack), mais o toolchain Go.
+#   docker compose up -d                       sobe a infraestrutura
+#   docker compose run --rm check              verificação completa do código
+#   docker compose run --rm integration        testes de integração contra a infraestrutura
+#
+# Todos os valores têm padrão local de EXEMPLO (não são segredos reais); podem ser
+# sobrescritos por um arquivo .env (ver .env.example). Imagens fixadas por digest.
+# Portas publicadas só em 127.0.0.1; o SQS não é publicado no host (ver
+# ARCHITECTURE.md e deploy/sqs/strict/README.md).
+name: jungle-gaming
+
+x-sqs-admin-env: &sqs-admin-env
+  AWS_ACCESS_KEY_ID: ${SQS_ADMIN_ACCESS_KEY_ID:-jg-local-sqs-admin}
+  AWS_SECRET_ACCESS_KEY: ${SQS_ADMIN_SECRET_ACCESS_KEY:-local-example-sqs-admin-secret}
+  AWS_DEFAULT_REGION: us-east-1
+
+x-keycloak-secrets: &keycloak-secrets
+  KC_SECRET_WALLET_INTERNAL: ${KC_SECRET_WALLET_INTERNAL:-local-example-wallet-internal-secret}
+  KC_SECRET_PROVIDER_A: ${KC_SECRET_PROVIDER_A:-local-example-provider-a-secret}
+  KC_SECRET_PROVIDER_B: ${KC_SECRET_PROVIDER_B:-local-example-provider-b-secret}
+  KC_SECRET_PROVIDER_A_SHORT_LIVED: ${KC_SECRET_PROVIDER_A_SHORT_LIVED:-local-example-provider-a-short-lived-secret}
+  KC_SECRET_NO_ROLES: ${KC_SECRET_NO_ROLES:-local-example-no-roles-secret}
+
+# Toolchain Linux com compilador C (necessário ao -race). Manter a versão igual
+# à do go.mod e do Dockerfile.
+x-go-toolchain: &go-toolchain
+  profiles: ["tools"]
+  image: golang:1.27.1-bookworm@sha256:69a7b9788769bec032d238959b61854e9ae87f57be9029ec04e9885fabf99195
+  working_dir: /src
+  environment:
+    <<: *keycloak-secrets
+    CGO_ENABLED: "1"
+    GOFLAGS: "-mod=readonly"
+    # Endereços como vistos de dentro da rede do Compose (usados pelos testes de integração).
+    TEST_PG_HOST: postgres
+    TEST_PG_DB: wallet
+    TEST_PG_SUPERUSER_PASSWORD: ${POSTGRES_PASSWORD:-local-example-postgres}
+    TEST_PG_MIGRATOR_PASSWORD: ${WALLET_MIGRATOR_PASSWORD:-local-example-migrator}
+    TEST_PG_APP_PASSWORD: ${WALLET_APP_PASSWORD:-local-example-app}
+    TEST_OIDC_TOKEN_URL: http://keycloak:8080/realms/jungle-gaming/protocol/openid-connect/token
+    TEST_OIDC_JWKS_URL: http://keycloak:8080/realms/jungle-gaming/protocol/openid-connect/certs
+    TEST_OIDC_ISSUER: http://localhost:${KEYCLOAK_HOST_PORT:-18080}/realms/jungle-gaming
+    TEST_SQS_ADMIN_ACCESS_KEY_ID: ${SQS_ADMIN_ACCESS_KEY_ID:-jg-local-sqs-admin}
+    TEST_SQS_ADMIN_SECRET_ACCESS_KEY: ${SQS_ADMIN_SECRET_ACCESS_KEY:-local-example-sqs-admin-secret}
+    TEST_SQS_ENDPOINT: http://sqs:4566
+    TEST_SQS_CREDENTIALS_FILE: /sqs-credentials/credentials
+    TEST_SQS_SERVICE_CREDENTIALS_FILE: /wallet-service-credentials/credentials
+  volumes:
+    - .:/src
+    - go-mod-cache:/go/pkg/mod
+    - go-build-cache:/root/.cache/go-build
+    - sqs-credentials:/sqs-credentials:ro
+    - wallet-service-credentials:/wallet-service-credentials:ro
+
+services:
+  postgres:
+    image: postgres:18.6-alpine@sha256:77f585114c32fbca283dc835b0596f4e52b51b4c6662d7810b2f4084f60a1873
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-example-postgres}
+      POSTGRES_DB: postgres
+      WALLET_DB: wallet
+      WALLET_MIGRATOR_PASSWORD: ${WALLET_MIGRATOR_PASSWORD:-local-example-migrator}
+      WALLET_APP_PASSWORD: ${WALLET_APP_PASSWORD:-local-example-app}
+    volumes:
+      - postgres-data:/var/lib/postgresql
+      - ./deploy/postgres/init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "127.0.0.1:${POSTGRES_HOST_PORT:-15432}:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "postgres", "-d", "wallet"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    stop_grace_period: 30s
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.8.0@sha256:b0f60d489d51c5d113390bdf5461d4c06e6051be026c05549f2e1e10ec352bcc
+    # start-dev: banco H2 interno e HTTP sem TLS — adequado só para ambiente local.
+    # O realm é importado de deploy/keycloak a cada criação do container.
+    command: ["start-dev", "--import-realm"]
+    environment:
+      <<: *keycloak-secrets
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KC_ADMIN_PASSWORD:-local-example-admin}
+      # Emissor fixo: o "iss" dos tokens é o mesmo pedido do host ou dos containers.
+      # As chaves (JWKS) continuam acessíveis pelo nome interno keycloak:8080.
+      KC_HOSTNAME: http://localhost:${KEYCLOAK_HOST_PORT:-18080}
+      KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "true"
+      KC_HEALTH_ENABLED: "true"
+    volumes:
+      - ./deploy/keycloak:/opt/keycloak/data/import:ro
+    ports:
+      - "127.0.0.1:${KEYCLOAK_HOST_PORT:-18080}:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/9000 && printf 'GET /health/ready HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\\n' >&3 && grep -q '\"UP\"' <&3"]
+      interval: 5s
+      timeout: 5s
+      retries: 40
+
+  sqs:
+    build: ./deploy/sqs/strict
+    image: jungle-gaming/ministack-strict:local
+    environment:
+      <<: *sqs-admin-env
+      AUTH: "true"          # IAM após validação SigV4 na entrada estrita (VULN-007)
+      PERSIST_STATE: "1"    # SQS/IAM: checkpoint com fsync antes da resposta
+      STATE_DIR: /state
+      LOG_LEVEL: WARNING
+    volumes:
+      - sqs-state:/state
+    # Sem "ports": só containers da rede do Compose alcançam o broker.
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('127.0.0.1', 4566), 2)"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    stop_grace_period: 30s
+
+  # Aplica as migrations pendentes com o papel dono do schema e termina.
+  #   docker compose run --rm migrate down 1    reverte a última (apaga dados!)
+  #   docker compose run --rm migrate version
+  migrate:
+    build: .
+    image: jungle-gaming/service:local
+    entrypoint: ["/migrate"]
+    command: ["up"]
+    environment:
+      MIGRATE_DATABASE_URL: postgres://wallet_migrator:${WALLET_MIGRATOR_PASSWORD:-local-example-migrator}@postgres:5432/wallet?sslmode=disable
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  # Cria filas, redrive e identidades IAM; grava credenciais para a aplicação e testes.
+  sqs-init:
+    image: amazon/aws-cli:2.37.8@sha256:420ab345e847291b541b45d989535f55bcff957c27fa1100fae4aa233e86398c
+    entrypoint: ["bash", "/init/init.sh"]
+    environment:
+      <<: *sqs-admin-env
+      AWS_ENDPOINT_URL: http://sqs:4566
+      CREDENTIALS_FILE: /sqs-credentials/credentials
+      SERVICE_CREDENTIALS_FILE: /wallet-service-credentials/credentials
+    volumes:
+      - ./deploy/sqs:/init:ro
+      - sqs-credentials:/sqs-credentials
+      - wallet-service-credentials:/wallet-service-credentials
+    depends_on:
+      sqs:
+        condition: service_healthy
+    restart: "no"
+
+  go:
+    <<: *go-toolchain
+    entrypoint: ["go"]
+
+  # Ferramenta local do gateway/observador, sem credenciais administrativas.
+  broker-cli:
+    profiles: ["tools"]
+    image: amazon/aws-cli:2.37.8@sha256:420ab345e847291b541b45d989535f55bcff957c27fa1100fae4aa233e86398c
+    environment:
+      AWS_SHARED_CREDENTIALS_FILE: /sqs-credentials/credentials
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ENDPOINT_URL: http://sqs:4566
+    volumes:
+      - sqs-credentials:/sqs-credentials:ro
+
+  api:
+    build: .
+    image: jungle-gaming/service:local
+    environment:
+      INSTANCE_ID: ${INSTANCE_ID:-}
+      PUBLISHER_QUEUE: ${PUBLISHER_QUEUE:-wallet-events.fifo}
+      PUBLISHER_CONCURRENCY: ${PUBLISHER_CONCURRENCY:-4}
+      CONSUMER_DLQ: ${CONSUMER_DLQ:-wager-transactions-dlq.fifo}
+      CONSUMER_QUEUE: ${CONSUMER_QUEUE:-wager-transactions.fifo}
+      CONSUMER_NAME: ${CONSUMER_NAME:-wager-consumer}
+      CONSUMER_PROVIDERS: ${CONSUMER_PROVIDERS:-provider-a,provider-b}
+      CONSUMER_CONCURRENCY: ${CONSUMER_CONCURRENCY:-4}
+      REFERENCE_TTL: ${REFERENCE_TTL:-10m}
+      REFERENCE_BASE_DELAY: ${REFERENCE_BASE_DELAY:-1s}
+      REFERENCE_MAX_DELAY: ${REFERENCE_MAX_DELAY:-1m}
+      APP_ROLES: ${APP_ROLES:-api,reference-worker,consumer,outbox-publisher}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      START_TIMEOUT: ${START_TIMEOUT:-30s}
+      DATABASE_URL: ${DATABASE_URL:-postgres://wallet_app:${WALLET_APP_PASSWORD:-local-example-app}@postgres:5432/wallet?sslmode=disable}
+      HTTP_ADDRESS: ${HTTP_ADDRESS:-:8080}
+      OIDC_ISSUER: ${OIDC_ISSUER:-http://localhost:${KEYCLOAK_HOST_PORT:-18080}/realms/jungle-gaming}
+      OIDC_JWKS_URL: ${OIDC_JWKS_URL:-http://keycloak:8080/realms/jungle-gaming/protocol/openid-connect/certs}
+      OIDC_AUDIENCE: ${OIDC_AUDIENCE:-wallet-api}
+      OIDC_INTERNAL_CLIENT: ${OIDC_INTERNAL_CLIENT:-wallet-internal}
+      ALLOW_INSECURE_LOCAL: ${ALLOW_INSECURE_LOCAL:-true}
+      SQS_ENDPOINT: ${SQS_ENDPOINT:-http://sqs:4566}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+      SQS_CREDENTIALS_FILE: ${SQS_CREDENTIALS_FILE:-/wallet-service-credentials/credentials}
+      DB_MAX_CONNS: ${DB_MAX_CONNS:-10}
+      DB_OPERATION_TIMEOUT: ${DB_OPERATION_TIMEOUT:-20s}
+      DB_LOCK_TIMEOUT: ${DB_LOCK_TIMEOUT:-3s}
+      DB_STATEMENT_TIMEOUT: ${DB_STATEMENT_TIMEOUT:-5s}
+      DB_MAX_RETRIES: ${DB_MAX_RETRIES:-3}
+      SHUTDOWN_TIMEOUT: ${SHUTDOWN_TIMEOUT:-20s}
+    ports:
+      - "127.0.0.1:${API_HOST_PORT:-18081}:${API_CONTAINER_PORT:-8080}"
+    volumes:
+      - wallet-service-credentials:/wallet-service-credentials:ro
+    depends_on:
+      ready:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "/service", "healthcheck"]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+    stop_grace_period: ${STOP_GRACE_PERIOD:-30s}
+
+  # Faz up --wait aguardar a conclusão dos dois jobs antes de declarar prontidão.
+  ready:
+    image: postgres:18.6-alpine@sha256:77f585114c32fbca283dc835b0596f4e52b51b4c6662d7810b2f4084f60a1873
+    entrypoint: ["sh", "-c", "exec sleep infinity"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      sqs-init:
+        condition: service_completed_successfully
+      keycloak:
+        condition: service_healthy
+
+  check:
+    <<: *go-toolchain
+    entrypoint: ["sh", "scripts/check.sh"]
+
+  integration:
+    <<: *go-toolchain
+    entrypoint: ["go", "test", "-race", "-tags", "integration", "-count=1", "-timeout", "480s", "./tests/integration/..."]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      keycloak:
+        condition: service_healthy
+      sqs-init:
+        condition: service_completed_successfully
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  postgres-data:
+  sqs-state:
+  sqs-credentials:
+  go-mod-cache:
+  go-build-cache:
+  wallet-service-credentials:
+
+
+
+
+
+
+
+

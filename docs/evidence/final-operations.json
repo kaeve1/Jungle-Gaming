@@ -1,0 +1,51 @@
+{
+  "project": "jungle-gaming-validation-56b94707926a",
+  "results": [
+    {
+      "case": "direct SQL reconciliation",
+      "status": "PASS",
+      "wallets": 10,
+      "divergences": 0,
+      "seconds": 0.215
+    },
+    {
+      "case": "restart three real service containers",
+      "status": "PASS",
+      "services_restarted": 3,
+      "original_balance": "75.00",
+      "current_balance": "76.00",
+      "seconds": 3.695
+    },
+    {
+      "case": "publisher original message identity",
+      "status": "PASS",
+      "input_message_id": "review-msg-af1b69c85bea4d2eb063dfb7604d6545",
+      "publisher_message_id": "review-msg-af1b69c85bea4d2eb063dfb7604d6545",
+      "event_id": "01a10794-a17e-79be-bf97-d50d29a1cec8",
+      "correlation_id": "review-msg-af1b69c85bea4d2eb063dfb7604d6545",
+      "causation_id": "01a10794-9d3c-7645-b117-294f08573e10",
+      "http_resolution_has_message_id": false,
+      "seconds": 8.037
+    },
+    {
+      "case": "readiness for configured queue",
+      "status": "PASS",
+      "configured_queue_exists": false,
+      "consumer_failure_observed": true,
+      "healthcheck_exit": 1,
+      "recovery_healthcheck_exit": 0,
+      "seconds": 24.883
+    },
+    {
+      "case": "confirmed outbox versus broker SIGKILL",
+      "status": "PASS",
+      "queued_before_kill": 2,
+      "queued_after_restart": 2,
+      "sql_events_marked_published": 2,
+      "wallet_id": "01a10795-681b-7ffe-acae-fa04b036bb35",
+      "input_receive_count_after_restart": 2,
+      "acknowledged_delete_survived_second_crash": true,
+      "seconds": 33.339
+    }
+  ]
+}

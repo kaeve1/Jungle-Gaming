@@ -1,0 +1,115 @@
+ Volume jungle-gaming-validation-56b94707926a_go-mod-cache Creating 
+ Volume jungle-gaming-validation-56b94707926a_go-mod-cache Creating 
+ Volume jungle-gaming-validation-56b94707926a_go-build-cache Creating 
+ Volume jungle-gaming-validation-56b94707926a_go-build-cache Creating 
+ Volume jungle-gaming-validation-56b94707926a_go-build-cache Created 
+ Volume jungle-gaming-validation-56b94707926a_go-build-cache Created 
+ Volume jungle-gaming-validation-56b94707926a_go-mod-cache Created 
+ Volume jungle-gaming-validation-56b94707926a_go-mod-cache Created 
+ Container jungle-gaming-validation-56b94707926a-check-run-1cc01398909c Creating 
+ Container jungle-gaming-validation-56b94707926a-check-run-1cc01398909c Created 
+
+== gofmt
+
+== go mod verify / tidy
+all modules verified
+go: downloading github.com/jackc/pgx/v5 v5.11.0
+go: downloading go.uber.org/fx v1.24.0
+go: downloading go.uber.org/goleak v1.2.0
+go: downloading github.com/aws/aws-sdk-go-v2 v1.47.1
+go: downloading github.com/aws/aws-sdk-go-v2/service/sqs v1.52.1
+go: downloading github.com/coreos/go-oidc/v3 v3.21.0
+go: downloading github.com/aws/aws-sdk-go-v2/config v1.33.6
+go: downloading github.com/golang-migrate/migrate/v4 v4.20.1
+go: downloading github.com/aws/aws-sdk-go-v2/credentials v1.20.6
+go: downloading github.com/aws/smithy-go v1.28.1
+go: downloading github.com/stretchr/testify v1.11.1
+go: downloading golang.org/x/lint v0.0.0-20190930215403-16217165b5de
+go: downloading github.com/go-jose/go-jose/v4 v4.1.4
+go: downloading golang.org/x/oauth2 v0.36.0
+go: downloading go.uber.org/zap v1.26.0
+go: downloading go.uber.org/dig v1.19.0
+go: downloading go.uber.org/multierr v1.10.0
+go: downloading golang.org/x/sys v0.48.0
+go: downloading github.com/jackc/pgerrcode v0.0.0-20220416144525-469b46aa5efa
+go: downloading github.com/dhui/dktest v0.4.6
+go: downloading github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
+go: downloading github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2
+go: downloading github.com/aws/aws-sdk-go-v2/internal/configsources v1.5.4
+go: downloading github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.20.1
+go: downloading github.com/aws/aws-sdk-go-v2/service/signin v1.10.1
+go: downloading github.com/aws/aws-sdk-go-v2/service/sso v1.38.1
+go: downloading github.com/aws/aws-sdk-go-v2/service/ssooidc v1.43.1
+go: downloading github.com/aws/aws-sdk-go-v2/service/sts v1.51.1
+go: downloading github.com/jackc/puddle/v2 v2.2.2
+go: downloading golang.org/x/sync v0.21.0
+go: downloading github.com/jackc/pgpassfile v1.0.0
+go: downloading github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761
+go: downloading golang.org/x/text v0.39.0
+go: downloading github.com/containerd/errdefs v1.0.0
+go: downloading github.com/moby/moby/client v0.4.1
+go: downloading github.com/lib/pq v1.10.9
+go: downloading golang.org/x/tools v0.47.0
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.8.4
+go: downloading github.com/docker/docker v28.5.2+incompatible
+go: downloading github.com/docker/go-connections v0.7.0
+go: downloading github.com/aws/aws-sdk-go-v2/internal/v4a v1.5.4
+go: downloading github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.13.19
+go: downloading github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.14.4
+go: downloading github.com/containerd/errdefs/pkg v0.3.0
+go: downloading github.com/Microsoft/go-winio v0.6.2
+go: downloading github.com/distribution/reference v0.6.0
+go: downloading github.com/moby/moby/api v1.54.2
+go: downloading github.com/opencontainers/image-spec v1.1.1
+go: downloading github.com/opencontainers/go-digest v1.0.0
+go: downloading go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.69.0
+go: downloading go.opentelemetry.io/otel/trace v1.44.0
+go: downloading github.com/moby/docker-image-spec v1.3.1
+go: downloading github.com/docker/go-units v0.5.0
+go: downloading go.opentelemetry.io/otel v1.44.0
+go: downloading github.com/felixge/httpsnoop v1.1.0
+go: downloading go.opentelemetry.io/otel/metric v1.44.0
+go: downloading github.com/morikuni/aec v1.0.0
+go: downloading github.com/moby/term v0.5.2
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading github.com/Azure/go-ansiterm v0.0.0-20250102033503-faa5f7b0171c
+go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+go: downloading github.com/go-logr/logr v1.4.3
+go: downloading github.com/go-logr/stdr v1.2.2
+go: downloading github.com/cespare/xxhash/v2 v2.3.0
+
+== go vet (inclui testes de integração)
+
+== go test -race
+?   	jungle-gaming-backend/cmd/migrate	[no test files]
+?   	jungle-gaming-backend/cmd/service	[no test files]
+ok  	jungle-gaming-backend/internal/adapters/auth	1.212s
+?   	jungle-gaming-backend/internal/adapters/health	[no test files]
+ok  	jungle-gaming-backend/internal/adapters/http	1.105s
+ok  	jungle-gaming-backend/internal/adapters/jsonstrict	1.025s
+ok  	jungle-gaming-backend/internal/adapters/observability	1.039s
+ok  	jungle-gaming-backend/internal/adapters/outboxpublisher	1.032s
+ok  	jungle-gaming-backend/internal/adapters/postgres	1.030s
+ok  	jungle-gaming-backend/internal/adapters/referenceworker	1.031s
+?   	jungle-gaming-backend/internal/adapters/runtime	[no test files]
+ok  	jungle-gaming-backend/internal/adapters/sqsclient	1.024s
+ok  	jungle-gaming-backend/internal/adapters/sqsconsumer	1.050s
+ok  	jungle-gaming-backend/internal/application	1.021s
+ok  	jungle-gaming-backend/internal/archtest	1.449s
+ok  	jungle-gaming-backend/internal/bootstrap	1.032s
+ok  	jungle-gaming-backend/internal/config	1.024s
+?   	jungle-gaming-backend/internal/dbmigrate	[no test files]
+ok  	jungle-gaming-backend/internal/domain	1.045s
+ok  	jungle-gaming-backend/internal/domain/money	1.030s
+?   	jungle-gaming-backend/migrations	[no test files]
+
+== govulncheck
+go: downloading golang.org/x/vuln v1.8.0
+go: downloading golang.org/x/telemetry v0.0.0-20260908163034-4bcc4b2ee518
+go: downloading golang.org/x/mod v0.41.0
+go: downloading golang.org/x/tools v0.50.0
+go: downloading golang.org/x/sync v0.23.0
+No vulnerabilities found.
+
+OK: todas as verificações passaram

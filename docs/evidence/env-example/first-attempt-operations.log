@@ -1,0 +1,5 @@
+{"case": "direct SQL reconciliation", "status": "PASS", "wallets": 10, "divergences": 0, "seconds": 0.213}
+{"case": "restart three real service containers", "status": "PASS", "services_restarted": 3, "original_balance": "75.00", "current_balance": "76.00", "seconds": 8.516}
+{"case": "publisher original message identity", "status": "PASS", "input_message_id": "review-msg-bdaf9b21e04f4be19472ddd7a809fcdd", "publisher_message_id": "review-msg-bdaf9b21e04f4be19472ddd7a809fcdd", "event_id": "01a10812-7b68-7bb9-bed1-014c780f1498", "correlation_id": "review-msg-bdaf9b21e04f4be19472ddd7a809fcdd", "causation_id": "01a10812-75eb-7ab9-aec9-6569b928dee9", "http_resolution_has_message_id": false, "seconds": 8.024}
+{"case": "readiness for configured queue", "status": "PROBE_ERROR", "detail": "docker stop failed with exit 1; content suppressed", "seconds": 1.584}
+{"case": "confirmed outbox versus broker SIGKILL", "status": "PASS", "queued_before_kill": 2, "queued_after_restart": 2, "sql_events_marked_published": 2, "wallet_id": "01a10812-d20c-7c4c-846f-95c7a9f91b4e", "input_receive_count_after_restart": 2, "acknowledged_delete_survived_second_crash": true, "seconds": 28.886}

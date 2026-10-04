@@ -1,0 +1,3 @@
+PASS: API real, IdP, BET/WIN/LOSS, replay original, ledger paginado, reconciliacao, metricas e acesso sem token recusado
+PASS: SQS real com envelope repetido/dedup IDs distintos e replay cruzado HTTP
+Carteira local criada para demonstracao: 01a1078d-2583-771a-bcd0-1ddc89ea1f2c

@@ -1,0 +1,11 @@
+{
+  "project": "jungle-gaming-validation-74887ba27953",
+  "exampleEnvCopiedExactly": true,
+  "ports": {
+    "api": 18081,
+    "idp": 18080,
+    "postgres": 15432
+  },
+  "roles": "api,reference-worker,consumer,outbox-publisher",
+  "envSha256": "2B9E0F53E66650D100F849CC468432A91C3488A2C1039F41645077FCE9D6F7C5"
+}
